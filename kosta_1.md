@@ -52,8 +52,8 @@ Hello, world!
   - 변수 카테고리 (= data type): int, void
   - 함수 카테고리 : main, printf
   - 데이터 : Hello, world!
-  - #include <stdio.h>
-    - # : 헤더 파일을 지정한다. 연산자가 아니다.
+  - '''#include <stdio.h>'''
+    - '#' : 헤더 파일을 지정한다. 연산자가 아니다.
     - stdio.h : 파일명
     
 * C언어의 개발환경은 Visual Studio 2019라는 IDE를 사용한다. IDE는 Integrated Development Environment라고 한다.
