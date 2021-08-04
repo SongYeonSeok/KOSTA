@@ -166,7 +166,7 @@ int main(void)
         printf(b);
     }
     
-    // 결과 : 20 (상수 : 변경 불가능)
+    // 결과 : 오류 
     </code>
     </pre>
     
@@ -217,3 +217,65 @@ int main(void)
       - LE : Less Equal / GE : Greater Equal
       - E : Equal / NE : Not Equal
 
+* 논리 연산자 
+  - and, or, not(이들을 논리값이라고 한다.)을 표현하는 연산자
+  - true(1), false(0) 반환
+  - 조건문에 많이 사용된다.
+    *       연산자       연산의 예           의미                       결합성
+    *       &&(and)        a&&b        true면 true 리턴                   ->
+    *       ||(or)         a||b        하나라도 true면 true 리턴          ->
+    *       !(not)          !a          true면 false를, false면 true리턴  ->
+    
+    - | : vertical bar
+    
+* 비트 연산자(정리하기)
+  * -, ~, &, ^, |, <<, >>
+  
+* 콤마(,) 연산자
+  - 둘 이상의 변수 동시 선언 시
+  - 둘 이상의 문장을 한 줄에 선언 시
+  - 함수의 매개변수 전달 시
+  - 익숙한 사람은 단순하게 작성할 수 있는 효과가 있지만, 가독성이 낮아지는 효과가 있다.
+  
+* 연산자의 우선 순위 (정리)
+  - 연산 순서를 결정짖는 순위
+  [ { ( ) } ]
+* 연산자의 결합성
+  - 우선 순위가 같은 연산자들의 연산 방향
+    - ex) 3+4*5/2-10 =3 
+
+* C 언어의 키워드들 (이텔릭체 : 사용 X, 진한 글씨 : 데이터 타입, 보조 역할, 괄호 표시 : 변수의 위치 표시)
+  - auto / **double** / **int** / struct
+  - **bool** / else / **long**/ switch
+  - break / enum / *register* / typedef
+  - case / (extern) / *restrict* / union
+  - **char** / **float** / return / **unsigned**
+  - **const** / for / **short** / **void**
+  - continue / goto / **signed** / *volatile*
+  - default / if / sizeof / while
+  - do / inline / (static)
+  
+  - bool : 논리 변수 type (true, false), C에서는 사실상 int와 동격으로, 구별없이 쓴다.
+    * 다만, 다른 언어에서는 혼용이 안되는 경우가 많으니까, int와 bool를 구별하여 쓰자.
+    * short, long 나눈 이유 : int가 2byte, long이 4byte인 시절이 있었는데, 고성능 프로세서 개발으로 int, long가 4byte로 처리가 되어졌는데, 
+    int가 4byte로 변경 전에 int가 2byte로 사용했을 때의 경우에 문제가 발생하였다. 따라서 이전의 2byte를 차지했던 int를 short int 즉, short로 지정하게 되었다.
+    * 따라서 short는 2byte int라고 생각하면 된다.
+    * short를 사용하는 이유 : 문자 (2byte 문자체계의 문자) -> unicode
+  
+  - signed / unsigned : signed을 사용하지 않으면 unsigned이기 때문에, unsigned(양수)를 잘 사용하지 않는다.
+    - 사용법 (int, long, short, char 에 사용)
+  
+  - unsigned shot : 2byte = 16bit : 0 ~ 65535 표현 가능 
+  - signed short : 2byte = 16bit : -32768 ~ 32767 표현 가능 
+  
+  - const : 상수(constants), 한번 선언하면 절대 변경되지 않는다.
+  
+  - void
+    * 미확정 타입
+    * 함수의 타입을 결정할 때 사용
+    * 단독 데이터 타입이 아니다. 많이 쓰이는 곳은 포인터 연산과 선언이다. 포인터 연산과 밀접한 관계가 있기 때문
+    
+  - sizeof (키워드는 아니다. 매크로이다.)
+    - 
+## 4장. 데이터 표현 방식의 이해
+* 참고 : 솔루션 탐색기 -> 프로젝트 새로 만들기 -> 새로 프로젝트 생성
