@@ -5,7 +5,7 @@
 ## 7장. 다양한 형태의 반복문
 - 뺑뺑이는 컴퓨터에게!
 
-* 반복문의 기능 : 특정 영역을 특정 조건이 만족하는 동안에 반복 실행하기 위한 문장
+* 반복문의 기능 : 특정 영역을 특정 조건이 만족하는(수행 조건) 동안에 반복 실행하기 위한 문장
 * 세 가지 형태의 반복문
   * while문에 의한 반복
   	- while문의 기본 원리와 의미
@@ -41,8 +41,10 @@
         <code>
         while (i < 10)
         {
-            printf("Hello World!\n");
-            i++;
+            printf("Hello World!\n"),i++;       // 콤마(,) ≒ 세미콜론(;) but, 문장의 끝은 아니다.
+                                                // 문장 자체로는 단일 문장으로 인식되기 때문에
+                                                // 중괄호가 생략이 될 수 있었던 것 
+                                                // 사용하면 욕먹는다. (절대 권장하지 않음)
         }    
         </code>
         </pre>
@@ -53,7 +55,7 @@
         <code>
         while(1)    // 반복의 조건 대신 0이 아닌 정수를 넣는다.
         {
-            printf("Hello World!\n");
+            printf("Hello World!\n");              
             i++;
         }
         </code>
@@ -262,7 +264,7 @@
     
     <pre>
     <code>
-    // 2단 
+    // 2단 - 1
     #include <stdio.h>
     #include <conio.h>
 
@@ -287,7 +289,141 @@
     </code>
     </pre>
  
- 
+    <pre>
+    <code>
+    
+    // 2단 - 2
+    #include <stdio.h>
+    #include <conio.h>
+    
+    int main()
+    {
+        int dan = 1;
+        int nDan = 9;
+        
+        for (int idx = 1; idx <= nDan; idx++)
+        {
+            printf("%d x %d = %2d       ", dan, idx, dan * idx);
+            printf("%d x %d = %2d       ", dan+1, idx, (dan+1) * idx);
+            printf("%d x %d = %2d       ", dan+2, idx, (dan+2) * idx);
+            printf("%d x %d = %2d       ", dan+3, idx, (dan+3) * idx);
+            printf("%d x %d = %2d\n", dan+4, idx, (dan+4) * idx);
+        }
+        
+        printf("\n");
+        dan = 6;
+        for (int idx = 1; idx <= nDan; idx++)
+        {
+            printf("%d x %d = %2d       ", dan, idx, dan * idx);
+            printf("%d x %d = %2d       ", dan+1, idx, (dan+1) * idx);
+            printf("%d x %d = %2d       ", dan+2, idx, (dan+2) * idx);
+            printf("%d x %d = %2d\n", dan+3, idx, (dan+3) * idx);
+        }
+        getch();
+        return 0;
+    }
+    </code>
+    </pre>
+    
+    <pre>
+    <code>
+    // 2단 - 3 (for문 중첩)
+    #include <stdio.h>
+    #include <conio.h>
+    
+    int main()
+    {
+        int dan, nDan = 9;
+        
+        for (dan = 2; dan < 10; dan += 4)
+        {
+            for (int idx = 1; idx <= nDan ; idx++)
+            {
+                printf("%d x %d = %2d       ", dan, idx, dan * idx);
+                printf("%d x %d = %2d       ", dan+1, idx, (dan+1) * idx);
+                printf("%d x %d = %2d       ", dan+2, idx, (dan+2) * idx);
+                printf("%d x %d = %2d\n", dan+3, idx, (dan+3) * idx);
+            }
+            printf("\n\n\n");
+        }
+        getch();
+        return 0;
+    }
+    </code>
+    </pre>
+    
+    * 프로그래밍할 때 중요한 것
+        - ** 중복되는 것을 최소화! **
+        - 결과물은 같더라도, 코드는 모두 다르다! 코드 구조가 같더라도, 변수의 이름은 같을 수가 없다. 따라서 자신이 편한 방식과 효율적인 코드 방식을 사용해야 한다.
+        - 상수, 설정값들을 위에 정의시켜 놓고, 초기갑과 여러 설정값들을 미리 설정하고, 그 외의 구간에 숫자를 입력하지 않도록 하자.(권장! 잘하면 프로그래머로서 좋다.)
+            * 이유 1 : 디버깅할 때 굉장히 유리하다. (값을 수정할 때 변수 하나만 변경하면 다 변경이 가능하니까, 수정 및 작업 시간이 줄어든다.)
+            * 이유 2 : 코딩 시에 유연성 증가
+            * 따라서 가급적 상수를 많이 사용하지 않도록 하자.
+        
+    <pre>
+    <code>
+    // 2단 4열 구구단
+    #include <stdio.h>
+    #include <conio.h>
+    
+    int main()
+    {
+        int i, j, k;        // 이렇게 먼저 자료형을 선언하는 방식을 사용하는 것이 좋다.
+        int dan = 2;        // 구구단의 2단 ~ 9단
+        int nDan = 9;       // xx단 : 9
+        
+        for (dan = 2; dan < 10; dan += 4)
+        {
+            for (int idx = 1; idx <= nDan; idx++)
+            {
+                for (i = 0; i < 4; i++)
+                    /* i<4도 반복 조건이지만, 탈출 조건도 가능하다. (초기값과 종료값을 주의하자.)
+                    4와 같은 상수를 반복문에 안 쓰는 것이 유연성을 높이는 길이다.
+                    4는 가로 방향 열 수를 의미
+                    */
+                {
+                    printf("%d x %d = %2d       ", dan+i, idx, (dan+i) * idx);
+                }
+                printf("\n");
+            }
+            printf("\n\n\n");
+        }
+        getch();
+        return 0;
+    }
+    </code>
+    </pre>
+    
+    <pre>
+    <code>
+    // 3단 3열 구구단
+    #include <stdio.h>
+    #include <conio.h>
+    
+    int main()
+    {
+        int i, j, k;
+        int dan, nDan = 9;          // nDan : xx단 (9)
+        int hDan = 3;               // hDan : 가로 방향 열의 개수
+        
+        for (dan = 1; dan <= nDan; dan += hDan)
+        {
+            for (int idx = 1; idx <= nDan; idx++)
+            {
+                for (i = 0; i < hDan; i++)
+                {
+                    printf("%2d x %2d = %3d     ", dan+i, idx, (dan+i) * idx);
+                }
+                printf("\n");
+            }
+            printf("\n\n\n");
+        }
+        getch();
+        return 0;
+    }
+    </code>
+    </pre>
+    
     <pre>
     <code>
     // 구구단.c
@@ -314,7 +450,7 @@
     * 반복 과정의 이해
         - ![image](https://user-images.githubusercontent.com/49339278/128298182-505318c3-2699-429e-8cd1-7c3a9d4e98df.png)
         
-       
+    - 비주얼 스튜디오 
        
 ## 8장. 조건에 따른 흐름의 분기 (= if - else문)
 * 조건문이 먼저인가? 반복문이 먼저인가? 이것은 사람마다 다르므로, 편한 거를 사용하면 된다.
@@ -365,6 +501,9 @@
     - if ~ else문에 비해서는 제한적이다. 그런데도 switch문을 사용해야 하는 경우가 종종 있다.
     - ![image](https://user-images.githubusercontent.com/49339278/128301100-68e13d1e-a54b-4804-b97e-1817c2260a46.png)
 
+* switch문에서 break문의 의미
+    - ![image](https://user-images.githubusercontent.com/49339278/128302559-d749bd30-ccd5-4261-a064-1f5c82c569e2.png)
+
 * 조건 연산자(삼항 연산자)
     - if~else 문을 간결히 표현하는 데 사용될 수 있다.
     - 조건? A : B
@@ -377,6 +516,80 @@
         - 'y>0'이 true면 a*b 연산결과를 x에 대입
         - 'y>0'이 false면 a/b 연산결과를 x에 대입
         
-* break : 반복문을 빠져 나올 때 사용 (무한 루프에서 사용)
-* continue : 다음 번 반복으로 넘어갈 때 사용 (무한 루프에서 사용)
+* break : 반복문을 빠져 나올 때 사용 (무한 루프에서 사용). 일종의 반복문 탈출 (많이 쓰임)
+* continue : 다음 번 반복으로 넘어갈 때 사용 (무한 루프에서 사용). 나머지 루프를 건너뛰고 다시 루프 반복한다.
     - ![image](https://user-images.githubusercontent.com/49339278/128301329-27edc021-a838-440b-b15d-79b91eda66c1.png)
+
+* switch vs if ~ else
+    1. 분기의 경우, 수가 많아지면 가급적 switch문 사용한다.
+        - ![image](https://user-images.githubusercontent.com/49339278/128302625-62bd3d96-47cf-4589-b65c-abe382236980.png)
+
+    2. switch문에서는 비교 연산이 올 수 없다.
+        - ![image](https://user-images.githubusercontent.com/49339278/128302707-f2480649-fe0e-4d46-bbcb-e5227e3a5dc1.png)
+        
+* GOTO label 문
+    * 프로그램의 흐름을 복잡하게 한다.
+    * C 프로그래밍은 절차적인 프로그래밍으로, 주의해서 사용하거나 가급적 사용하지 말자. (에러가 발생하였을 때, 비상상황에서 사용)
+    * 잘못 사용하게 되면, 중구난방인 상태가 올 수 있다.
+    * ![image](https://user-images.githubusercontent.com/49339278/128302758-f83574e9-6f2c-4535-9c6d-d66915076fd4.png)
+
+
+* 새로운 컴퓨터 언어가 개발되는 이유 : 새로운 흥미 유발 + 새로운 시장 창출 목적
+    - 많이 띄울려고 노력하고 있다. 그렇게 해야 새로운 시장이 창출이 가능하다.
+    - 새로운 언어를 만들 때 가장 많이 참조되는 언어가 C언어이다.
+    
+* 실습 문제
+    1. if문을 이용해서 숫자 키를 누르면 해당하는 영어 단어을 출력하는 프로그램을 작성하여라.
+        - 만일 숫자 키 외의 키를 누르면 프로그램을 종료하세요.
+        - 0을 누르면 프로그램을 종료하세요.
+        - ![image](https://user-images.githubusercontent.com/49339278/128302998-982e4e24-e855-44a2-99a1-9b049fa00b93.png)
+        <pre>
+        <code>
+        #include <stdio.h>
+        #include <conio.h>
+        
+        int main()
+        {
+            int num;    // 입력되는 숫자
+            
+            while (1)
+            {
+                printf("숫자를 입력하세요: ");
+                scanf("%d"
+                // scanf_s("%d", &num);     // visual studio에서 scanf가 사용 안될 때 사용
+                if (num == 1)       {printf(">1 : One\n");    break;}
+                else if (num == 2)  {printf(">2 : Two\n");    break;}
+                else if (num == 3)  {printf(">3 : Three\n");  break;}
+                else if (num == 4)  {printf(">4 : Four\n");   break;}
+                else if (num == 5)  {printf(">5 : Five\n");   break;}
+                else if (num == 6)  {printf(">6 : Six\n");    break;}
+                else if (num == 7)  {printf(">7 : Seven\n");  break;}
+                else if (num == 8)  {printf(">8 : Eight\n");  break;}
+                else if (num == 9)  {printf(">9 : Nine\n");   break;}
+                else break;
+            }
+            /* if-else문에서 들여쓰기는 시각적 목적으로 사용하는데, 들여쓰기 하지 않더라도 구조만
+               간단하다면 들여쓰기 하지 않아도 된다.*/
+        }
+        </code>
+        </pre>
+        
+        * 참고 (scanf, scanf_s의 차이점)
+            - 비쥬얼 스튜디오를 사용하게 되면 SDL로 인해 scanf()사용할 때 오류가 발생한다.
+            - 해결방법 1 : 프로젝트 -> 속성 -> C/C++ -> SDL 아니오 설정
+            - 해결방법 2 : scanf 대신 scanf_s 사용
+            - 해결방법 3 : #include <stdio.h>와 함께 #define_CRT_SCURE_NO_WARNINGS를 작성하면 된다.
+            
+        * scanf_s 사용 방법
+            1. 문자 1개를 입력받을 때
+            2. 문자열 입력받을 때
+            3. 정수 숫자 입력받을 
+        
+    2. 1번 문제는 switch ~ case 문을 이용해서 작성하여라.
+        <pre>
+        <code>
+        
+        </code>
+        </pre>
+        
+        
