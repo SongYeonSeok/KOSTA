@@ -362,12 +362,12 @@ int main(void)
   - 비트 단위 연산자의 종류(>>와 <<는 C에서만 사용한다. C++는 함부로 쓰다가 이상한 결과가 나온다. 따라서 꼭 필요한 경우가 아니면 사용하지 않는다.)
   
     *       연산자    연산의 의미                      예시     결합성
-    *         &       비트 단위 AND                 ex) a & b     ->
-    *         |       비트 단위 OR                  ex) a | b     ->
-    *         ^       비트 단위 XOR (배타적 논리합) ex) a ^ b     ->
-    *         ~       비트 단위 NOT                 ex) ~a        ->
-    *         <<      왼쪽으로 이동(SHL), *2 효과   ex) a << 2    ->
-    *         >>      오른쪽으로 이동(SHR) /2 효과  ex) a >> 2    ->
+    *         &       비트 단위 AND                 ex) a & b     □
+    *         |       비트 단위 OR                  ex) a | b     □
+    *         ^       비트 단위 XOR (배타적 논리합) ex) a ^ b     □
+    *         ~       비트 단위 NOT                 ex) ~a        □
+    *         <<      왼쪽으로 이동(SHL), *2 효과   ex) a << 2    □
+    *         >>      오른쪽으로 이동(SHR) /2 효과  ex) a >> 2    □
     
     - A   : 0 1 0 1
     - B   : 0 0 1 1
@@ -375,9 +375,41 @@ int main(void)
     - A|B : 0 1 1 1
     - A^B : 0 1 1 0 (비교되는 두 개의 값 비트가 같으면 0, 달라야만 1)
     - ~A  : 1 0 1 0
+    - A<<2: 1 0 1 0 1
+    - A>>2 :0 0 1 0
     
 ## 5강. 상수와 기본 자료형
-* 앞에거는 강의자료 보기
+* C언어의 기본 자료형
+  - 자료형(data type) : 선언한 변수의 특징을 나타내기 위한 키워드
+    - 기본 자료형 : 기본적으로 제공이 되는 자료형
+    - 사용자 정의 자료형 : 구조체, 공용체
+    
+  - 기본 자료형의 종류와 데이터의 표현 범위
+    - ![image](https://user-images.githubusercontent.com/49339278/128269579-8e9dd5e9-7c96-4e7b-bd86-cb9f62796222.png)
+    
+  - 다양한 자료형이 제공되는 이유
+    - 데이터의 표현 방식이 다르기 때문 : 정수형 / 실수형 데이터를 표현하는 방식
+    
+  - 메모리 공간을 적절히 사용하기 위해서
+    - 데이터의 표현 범위를 고려해서 자료형 선택
+    - 작은 메모리 공간에 큰 데이터를 저장하는 경우, 데이터의 손실이 발생할 수 있음
+    
+- sizeof 연산자
+  - 피연산자의 메모리 크기를 반환
+  - 피연산자로 자료형의 이름이 올 경우 괄호를 사용
+  - 그 이외의 경우 괄호의 사용은 선택적
+    
+    <pre>
+    <code>
+    int main(void)
+    {
+        int val = 10;
+        printf("%d", sizeof val); // 변수 val의 메모리 크기 출력
+        printf("%d", sizeof(int));  // 자료형 int의 메모리 크기 출력
+    }
+    </code>
+    </pre>
+       
 
 * 자료형 선택의 기준
   - 정수형 데이터를 처리하는 경우
@@ -387,3 +419,143 @@ int main(void)
     
   - 실수형 데이터를 처리하는 경우
     - 선택의 지표는 정밀도, 정밀도란 오차 없이 표현 가능한 정도 의미
+      - 선택의 지표는 정밀도로, 오차 없이 표현 가능한 정도를 의미한다.
+      - 일반적 선택은 double
+      - ![image](https://user-images.githubusercontent.com/49339278/128269842-8716b182-4bc5-410b-a8f5-4585cc8f6589.png)
+
+- unsigned가 붙어서 달라지는 표현의 범위
+  - MSB까지도 데이터의 크기를 표현하는데 사용
+  - 양의 정수로 인식
+  - 실수형 자료형에는 붙일 수 없다.
+    - ![image](https://user-images.githubusercontent.com/49339278/128269896-36db7359-b75a-401f-836e-68901a98cd33.png)
+
+- 문자 표현을 위한 ASCII 코드의 등장
+  - 미국 표준 협회(ANSI)에 의해 정의
+  - 컴퓨터를 통해서 문자를 표현하기 위한 표준이다. 컴퓨터는 그 자체적으로 문자를 표현하지 못하기 때문
+  - 문자와 숫자의 연결 관계를 정의
+    - 문자 A는 숫자 65, 문자 B는 숫자 66...
+    
+- ASCII 코드의 범위
+  - 0이상 127이하, char형 변수로 처리 가능
+  - char형으로 처리하는 것이 합리적
+  
+- 문자의 표현 : 따옴표('')를 이용해서 표현
+  - char ch1 = 'A'
+
+- 리터럴(Literal) 상수 : 이름을 지니지 않는 상수
+  <pre>
+  <code>
+  int main(void)
+  {
+      int val = 30 + 40;  // val : 변수, 30, 40 : 리터럴 상수(이름 없음)
+  }
+  </code>
+  </pre>
+
+- 리터럴(Literal) 상수의 기본 자료형 : 상수도 메모리 공간에 저장되기 위해서 자료형이 결정된다.
+  <pre>
+  <code>
+  int main(void)
+  {
+      char c = 'A'; // 문자 상수(char)
+      int i = 5;    // 정수 상수(int)
+      double d = 3.15// 실수 상수(double)
+  }
+  </code>
+  </pre>
+  
+  - 리터럴 상수의 기본 자료형
+  <pre>
+  <code>
+  int main(void)
+  {
+      float f = 3.14 ; // float f = 3.14f
+      return 0;
+  }
+  </code>
+  </pre>
+  
+    - warning C4305: 'initializing' : truncation from 'const double' to 'float'
+  
+- 접미사에 따른 다양한 상수의 표현
+  - ![image](https://user-images.githubusercontent.com/49339278/128270405-c67e5e10-5bdc-49fc-9f83-5b8ef3c25510.png)
+
+- 심볼릭(symbolic) 상수 : 이름을 지니는 상수
+- 심볼릭 상수를 정의하는 방법
+  - const 키워드를 통한 변수의 상수화
+  - 매크로를 이용한 상수의 정의
+  
+- const 키워드에 의한 상수화
+<pre>
+<code>
+int main(void)
+{
+    const int MAX = 100;
+    const double PI = 3.1415;
+}
+</code>
+</pre>
+
+  - 잘못된 상수 선언
+  <pre>
+  <code>
+  int main(void)
+  {
+    const int MAX;
+    MAX = 100;
+  }
+  </code>
+  </pre>
+  
+- 자료형 변환의 두 가지 형태
+  1. 자동 형 변환(= 묵시적 형 변환)
+    - 자동적으로 발생하는 형태의 변환
+    
+    - 자동 형 변환이 발생하는 상황 
+      1. 대입 연산시
+        <pre>
+        <code>
+        int main(void)
+        {
+          int n = 5.25; // 소수부의 손실
+          double d = 3; // 값의 표현이 넓은 범위로의 변환
+          char c = 129; // 상위 비트의 손실
+        </code>
+        </pre>
+        
+      2. 정수의 승격에 의해 (int형 연산이 빠른 이유)
+        - 정수형 연산 자체를 단일화시킨 결과
+        <pre>
+        <code>
+        int main(void)
+        {
+          char c1 = 10, c2 = 20;
+          char c3 = c1 + c2 ;
+        </code>
+        </pre>
+        
+      3. 산술 연산 과정에 의해
+        <pre>
+        <code>
+        int main(void)
+        {
+          double e1 = 5.5 + 7;      // double + int
+          double e2 = 3.14f + 5.25; // float + double
+        
+        </code>
+        </pre>
+        
+      * 산술 연산 형 변환 규칙 : 데이터의 손실이 최소화되는 방향으로
+        - char -> int -> long -> float -> double -> long double
+        
+  2. 강제 형 변환(= 명시적 형 변환)
+    - 프로그래머가 명시적으로 형 변환을 요청하는 형태의 변환
+    - Cast 연산자
+    <pre>
+    <code>
+    float f = (float)3.14;    // 3.14를 float형으로 형 변환
+    double e1 = 3 + 3.14;     // 정수 3이 double 형으로 자동 형 변환
+    double e2 = 3 + (int)3.14;  // 3.14가 int
+    </code>
+    </pre>
+    
