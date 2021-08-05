@@ -21,6 +21,7 @@
   </pre>
 
 # 2. 변수와 연산자
+## 3장. 변수와 연산자
 * 연산자란 무엇인가? : 연산을 요구할 때 사용되는 기호
   - +, -, *, /
   
@@ -155,7 +156,7 @@ int main(void)
     </code>
     </pre>
     
-    - 상수
+    - 상수 : 프로그램 소스에 삽입되어 있는 모든 숫자 문자열은 모두 상수
     <pre>
     <code>
     #include <stdio.h>
@@ -221,11 +222,11 @@ int main(void)
 * 논리 연산자 
   - and, or, not(이들을 논리값이라고 한다.)을 표현하는 연산자
   - true(1), false(0) 반환
-  - 조건문에 많이 사용된다.
-    *       연산자       연산의 예           의미                       결합성
-    *       &&(and)        a&&b        true면 true 리턴                   ->
-    *       ||(or)         a||b        하나라도 true면 true 리턴          ->
-    *       !(not)          !a          true면 false를, false면 true리턴  ->
+  - 조건문에 많이 사용된다. 하지만 조건문에 사용할 때 중첩하여 사용한다면, 괄호를 적극적으로 사용해야 한다.
+    *       연산자               연산의 예           의미                       결합성
+    *       &&(and, 논리곱)        a&&b        true면 true 리턴                   ->
+    *       ||(or, 논리합)         a||b        하나라도 true면 true 리턴          ->
+    *       !(not)                  !a          true면 false를, false면 true리턴  ->
     
     - | : vertical bar
     
@@ -238,23 +239,28 @@ int main(void)
   - 함수의 매개변수 전달 시
   - 익숙한 사람은 단순하게 작성할 수 있는 효과가 있지만, 가독성이 낮아지는 효과가 있다.
   
+* 세미콜론(;) = C언어에서 무조건 사용! -> 콤마도 이러한 기능과 조금 비슷한 역할을 
+  
 * 연산자의 우선 순위 (정리)
   - 연산 순서를 결정짖는 순위
-  [ { ( ) } ]
+  [ { ( ) } ] -> only ( )만!
 * 연산자의 결합성
   - 우선 순위가 같은 연산자들의 연산 방향
     - ex) 3+4*5/2-10 =3 
 
 * C 언어의 키워드들 (이텔릭체 : 사용 X, 진한 글씨 : 데이터 타입, 보조 역할, 괄호 표시 : 변수의 위치 표시)
-  - auto / **double** / **int** / struct
-  - **bool** / else / **long**/ switch
-  - break / enum / *register* / typedef
-  - case / (extern) / *restrict* / union
-  - **char** / **float** / return / **unsigned**
-  - **const** / for / **short** / **void**
-  - continue / goto / **signed** / *volatile*
-  - default / if / sizeof / while
-  - do / inline / (static)
+  
+  | 목록1 |  목록2 |  목록3 |  목록4 |
+  |:----:|:-----:|:-----:|:----:|
+  | auto | **double** | **int** | struct |
+  |**bool** | else | **long** | switch |
+  | break | enum | *register* | typedef |
+  | case | (extern) | *restrict* | union |
+  | **char** | **float** | return | **unsigned** |
+  | **const** | for | **short** | **void** |
+  | continue | goto | **signed** | *volatile* |
+  | default | if | sizeof | while |
+  | do | inline | (static) | |
   
   - bool : 논리 변수 type (true, false), C에서는 사실상 int와 동격으로, 구별없이 쓴다.
     * 다만, 다른 언어에서는 혼용이 안되는 경우가 많으니까, int와 bool를 구별하여 쓰자.
@@ -289,7 +295,7 @@ int main(void)
   - n 진수 표현 방식 : n개의 문자를 이용해서 데이터를 표현
     - 2진수 표현 범위 : 0 1
     - 10진수 표현 범위 : 0 1 2 3 4 5 6 7 8 9
-    - 16진수 표현 범위 : 0 1 2 3 4 5 6 7 8 9 a b c d e f
+    - 16진수 표현 범위 : 0 1 2 3 4 5 6 7 8 9 a b c d e f (참고: 16진수는 부호가 없다.)
       - 16_(10) = 10_(16) (16^1 + 0 * 16^0)
     * 참고 : 프로그래밍 할 때, 이진수 생각한다고 해서 2씩 나누는 짓 하지 마라. 컴퓨터로 다 되는 것
     
@@ -318,7 +324,7 @@ int main(void)
   <code>
   int a = 10; // 10진수, 아무런 표시가 없으므로..
   int b = 0xa; // 16진수, 0x로 시작하므로...
-  int c = 012;  // 8진수, 0으로 시작하므로...
+  int c = 012;  // 8진수, 0으로 시작하므로... (권장하지 않는다. 10진수와 헷갈리는 경우가 많다.)
   </code>
   </pre>
   
@@ -369,6 +375,7 @@ int main(void)
     *         <<      왼쪽으로 이동(SHL), *2 효과   ex) a << 2    □
     *         >>      오른쪽으로 이동(SHR) /2 효과  ex) a >> 2    □
     
+    * ^연산자는 보통 암호처리할 때 사용하기도 한다.
     - A   : 0 1 0 1
     - B   : 0 0 1 1
     - A&B : 0 0 0 1
@@ -377,6 +384,11 @@ int main(void)
     - ~A  : 1 0 1 0
     - A<<2: 1 0 1 0 1
     - A>>2 :0 0 1 0
+    
+    * 추가 >>, << 설명 (통신 프로토콜 사용할 때 비트를 검사하기 위해 가끔 사용하는 경우가 더러 있음.)
+      - a = 0000000000001111
+      - a>>2 = 0000000000111100 (*2 효과)
+      - a<<2 = 0000000000000011 (/2 효과)
     
 ## 5강. 상수와 기본 자료형
 * C언어의 기본 자료형
@@ -547,8 +559,9 @@ int main(void)
         
       * 산술 연산 형 변환 규칙 : 데이터의 손실이 최소화되는 방향으로
         - char -> int -> long -> float -> double -> long double
+        - 역으로도 가능하지만, 데이터의 손실이 생기기 때문에 일부로 의도적으로 하지 않는 이상 하지 않는 것이 좋다.
         
-  2. 강제 형 변환(= 명시적 형 변환)
+  2. 강제 형 변환(= 명시적 형 변환, cast라고 한다.)
     - 프로그래머가 명시적으로 형 변환을 요청하는 형태의 변환
     - Cast 연산자
     <pre>
