@@ -527,7 +527,7 @@
     2. switch문에서는 비교 연산이 올 수 없다.
         - ![image](https://user-images.githubusercontent.com/49339278/128302707-f2480649-fe0e-4d46-bbcb-e5227e3a5dc1.png)
         
-* GOTO label 문
+* GOTO label 문 (사용하지 말기)
     * 프로그램의 흐름을 복잡하게 한다.
     * C 프로그래밍은 절차적인 프로그래밍으로, 주의해서 사용하거나 가급적 사용하지 말자. (에러가 발생하였을 때, 비상상황에서 사용)
     * 잘못 사용하게 되면, 중구난방인 상태가 올 수 있다.
@@ -588,7 +588,35 @@
     2. 1번 문제는 switch ~ case 문을 이용해서 작성하여라.
         <pre>
         <code>
-        
+        #include <stdio.h>
+	#include <conio.h>
+	
+	int main()
+	{
+		int num;	// 입력받을 숫자
+		
+		printf("숫자를 입력하세요: ");
+		scanf("%d", &num);
+		// scanf_s("%d", &num);		// scanf 안될 때 사용한다.
+		
+		switch(num)
+		{
+		case 1 : printf(">1 : One\n");		break;
+		case 2 : printf(">2 : Two\n");		break;
+		case 3 : printf(">3 : Three\n");	break;
+		case 4 : printf(">4 : Four\n");		break;
+		case 5 : printf(">5 : Five\n");		break;
+		case 6 : printf(">6 : Six\n");		break;
+		case 7 : printf(">7 : Seven\n");	break;
+		case 8 : printf(">8 : Eight\n");	break;
+		case 9 : printf(">9 : Nine\n");		break;
+		default : break;
+		}
+		
+		getch();
+		return 0;
+		
+	}
         </code>
         </pre>
         
