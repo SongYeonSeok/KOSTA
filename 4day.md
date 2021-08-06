@@ -6,16 +6,110 @@
 * 현직으로 들어가면, 개발보다 다른 사람들이 개발한 것들을 해석하는 경우가 95%이다. 해석을 꼼꼼하게 하여 실력을 쌓고, 클린 코드를 작성하도록 노력하여 가독성을 높이고, 후배들에게 본보기가 될 수 있도록 노력하자!
 
 ## 9장. C언어의 핵심! 함수
-* main 함수 다시 보기
+* 함수 = function, 모듈(복수)
+* y = f(x) = ax + b
+	- y = output variable, return value
+	- x = input variable
+* 함수 = 입력값 + 출력값 (유형이 다르다.)
+---------------
+
+* main 함수 다시 보기 : 함수의 기본 형태
+	<pre><code>
+	#include <stdio.h>
+	
+	int main(void)		// int : 반환의 형태(= 변수 선언과 동일)	-> 시작을 int main으로 시작하는 구나 생각하기
+	{					// main : 함수의 이름
+						// (void) : 입력의 형태 - void는 무엇인가? data type이 정의되지 않은 것을 의미 (미정의)
+		함수의 몸체
+						// { } : main 몸체의 시작과 끝
+	}
+	</code></pre>
+	
 * 함수를 정의하는 이유
+	* 모듈화에 의한 프로그램의 질 향상이 가능
+	* 유지 보수 및 확장의 용이성
+	* 문제 해결의 용이성 : "Divided and Conquer!"
+		* 모래알처럼 잘게 문제를 나눈 후에 굳혀서 문제를 해결하는 것이다.
+	
 * 4가지 형태의 함수
+	* 전달 인자 O, 반환 값 O
+	* 전달 인자 O, 반환 값 X
+	* 전달 인자 X, 반환 값 O
+	* 전달 인자 X, 반환 값 X
+	
 * 전달 인자와 반환 값, 둘 다 있는 함수
+	```c
+	int Add (int i, int j)		// 두 수를 입력 받아 그 합을 되돌려 줌
+	{
+		int result = i + j;
+		return result;			// i + j값인 result 값을 반환하라.
+	}
+	```
 * 함수 호출 과정의 이해
+	```c
+	#include <stdio.h>
+	
+	int Add(int i, int j)
+	{
+		int result = i + j;
+		return result;
+	}
+	
+	int main(void)
+	{
+		int d;
+		d = Add(3, 4);
+		printf("%d \n", d);
+		return 0;
+	}
+	```
+![image](https://user-images.githubusercontent.com/49339278/128442683-a9fa03fd-3a46-4ec4-9062-d8ec3044c85c.png)
+
 * 다양한 형태의 함수
-* 함수 선언의 필요성
-* 함수 선언의 의미
+	```c
+	void Result_Print(int val)		// void : 데이터 타입 미정의, 없다는 뜻! 단, 1가지 예외는 있다.
+	{								// 입력된 인자를 받아서 설명문을 덧붙여서 출력하는 함수
+		printf("덧셈에 대한 결과 : %d \n", val);
+		printf("****** END ******** \n");
+	}
+	
+	int Input(void)					// 빈 괄호 써도 된다. (기본형이 integer이므로 생략해도 integer라고 C언어는 인식됨.)
+	{								// 하지만, C++이 개발되면서 문법이 엄격해져서, void는 물론이고, int라도 int로 표시해야 한다.
+		int input;					// 단, 아무것도 입력하는 것이 없다면 생략해도 된다.
+		scanf("%d", &input);
+		return input;
+	}
+	
+	void Intro(void)				// 리턴되는 값도 없고, 입력되는 값도 void라서 아무런 입력되는 값이 없다고 선언
+	{
+		printf("****** START ****** \n");
+		printf("두개의 정수 입력 : ");
+	}
+	```
+	
+* 함수 선언의 필요성 : 컴파일러의 특성상, 함수는 호출되기 전에 정의되어야 한다.
+* ![image](https://user-images.githubusercontent.com/49339278/128443552-d794db5a-be13-4d6a-9976-fdeba7cd7b0a.png)
+	* 함수는 호출되기 전에 작성되어야 한다. 그래야 컴파일러가 좋아한다.
+	* main 함수가 제일 마지막에 위치되어 있어야 한다.
+
+* 함수 선언의 의미 : 이후에 정의될 함수에 대한 정보를 제공한다.
+	* 보통 함수 작성할 때, 사용자 정의 함수 먼저, main 함수가 마지막이지만, 사용자가 만든 함수 선언을 먼저하게 되면 main 함수 뒤에 작성할 수 있다.
+	* 귀찮지만, 복잡한 함수를 작성할 때 함수 선언이 많아져서 길어지는 경우가 많다. -> 본체는 별로 없지만, 함수 선언으로 인해 코드가 많아지는 경우가 있다.
+		* 그럴 때, 함수 선언들을 모아 .h(헤더 파일) 파일로 모아서 #include로 정리 및 실행하면 편리하다. (이름은 내가 작성해도 가능)
+	* ![image](https://user-images.githubusercontent.com/49339278/128443266-8a7996b9-7a45-4c4a-9653-fc032253ad6f.png)
+		* Add 함수의 원형 선언을 Prototype이라고 한다. (= 함수의 head와 같다.) , 세미콜론을 표시하여야 한다.
+
 * 실습 문제
 	* 입력받은 KEY 값을 함수의 매개변수로 전달하고 함수 내에서 대/소문자/숫자/특수키 종류를 구분하여 출력하는 프로그램을 작성
+	* main 함수에 sub 함수를 불러 쓸 것
+	
+	* 참고 : ASCII 코드 
+		* ![image](https://user-images.githubusercontent.com/49339278/128447206-65ca1e10-8d06-4269-8ef3-ce120bc1c5d9.png)
+		* NUL(NULL) - 0, LF - 10, CR - 13 꼭 외워두기
+		* 0부터는 48 ~ 57(decimal)	/ 0x30 ~ 0x39 (hexadecimal)까지
+		* A부터 Z까지는 65 ~ 90(decimal)	/ 0x40 ~ 0x4F (hexadecimal)까지
+		* a부터 z까지는 97 ~ 122(decimal) / 0x61 ~ 0x7A (hexadecimal)까지
+	
 * 변수의 특성에 따른 분류
 * 지역 변수의 접근 범위
 * 지역 변수의 메모리상 존재 기간
@@ -57,4 +151,5 @@
 ## 12장. 다차원 배열 그리고 포인터
 * 1차원 배열 이름의 포인터 타입 결정 포인트!
 * 1차원 배열 이름
-* 
+* 다차원 배열의 포인터 타입 결정 포인트
+* 2차원 배열 이름
