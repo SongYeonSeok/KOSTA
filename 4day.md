@@ -158,6 +158,22 @@
 		{
 			printf(">입력하신 Key ['%c']는 특수문자 키 입니다.\n", c);
 		}
+		
+		/*
+		
+		// switch문 
+		num = sub(c);
+		switch (num)
+		{
+		case 0:  printf(">입력하신 Key ['%c']는 대문자입니다.\n", c);	break;
+		case 1:  printf(">입력하신 Key ['%c']는 소문자입니다.\n", c);	break;
+		case 2:  printf(">입력하신 Key ['%c']는 특수키입니다.\n", c);	break;
+		case 3:  printf(">입력하신 Key ['%c']는 숫자입니다.\n", c);	 break;
+		default: 	break;
+
+		}
+		
+		*/
 	}
 
 	int sub(char a)		// 입력 값에 대한 키 분류 값 리턴
@@ -177,9 +193,13 @@
 	```
 * 변수의 특성에 따른 분류
 	* 지역 변수(Local Variable) : 중 괄호 내에 선언되는 변수
-	* 전역 변수(Global Variable) : 함수 내에 선언되지 않는 변수
-	* 정적 변수(Static Variable) : 함수 내부, 외부 모두 선언 가능
-	* 레지스터 변수(Register Variable) : 선언에 제한이 많이 따름
+	* **전역 변수(Global Variable)** : 함수 외 선언되는 변수		-> 모두 static이라고 생각하면 된다.
+	* 정적 변수(Static Variable) : 함수 내부, 외부 모두 선언 가능. 하지만 내부에는 사용하지 않는 것을 권장한다.
+	* 레지스터 변수(Register Variable) : 선언에 제한이 많이 따름 (신경 쓸 필요가 없다. 안써도 된다.)
+	
+	* 중요한 변수는 처음 시작할 때 한꺼번에 선언하고(전역 변수), 그렇지 않은 것들은 지역 변수로 사용해야 한다.(지역 변수)
+	
+	* 잘 짜인 프로그램은 누가 봐도 알기 쉬운 코드를 작성하는 것이다.
 	
 * 지역 변수의 접근 범위
 	* 지역 변수는 선언 된 함수 내에서만 접근 가능
@@ -221,20 +241,93 @@
 	- 4단계
 		- ![image](https://user-images.githubusercontent.com/49339278/128459577-cbee8b7b-e62b-409e-ae00-a83a6999298f.png)
 
-* 또 다른 형태의 지역 변수
-* 지역 변수의 또 다른 특성
-* 지역변수와 매개변수
-* 전역변수
-* 전역 변수의 또 다른 특징
+* 또 다른 형태의 지역 변수 : while, for, if와 같은 문장에 의해 형성되는 지역 내에서 선언되는 변수
+	- ![image](https://user-images.githubusercontent.com/49339278/128463106-f6ff057b-5ed5-4fb4-a43d-0114b047b70d.png)
+
+* 지역 변수의 또 다른 특성 : 경우에 따라서 지역 변수는 다른 지역 변수를 가리기도 한다.
+	- ![image](https://user-images.githubusercontent.com/49339278/128463158-fad91caa-5e47-44ff-b2e3-55e1aa085dd5.png)
+	- 가급적 쓰지 않는 것이 좋다.
+
+* 지역변수와 매개변수 : 매개 변수도 지역 변수의 일종이다. (주의)
+	- ![image](https://user-images.githubusercontent.com/49339278/128463201-727f0af0-09e2-49da-9ce4-7437dbd62897.png)
+
+* 전역변수 : 변수 명에 주의해야 한다. 가능하면 복잡하고 길고 명확하게 써라. (i, j, k는 전역변수로 쓰지 않고 지역 변수로 써라.)
+	- 프로그램 어디에서나 접근이 가능한 변수
+	- 특정 영역(함수, 반복문, ...)에 속하지 않는다.
+	- 프로그램이 종료될 때까지 존재
+	- 같은 이름의 지역 변수에 의해서 가려지기도 한다.
+
 * static 변수
-* 보다 빠르게! register 변수
-* 재귀 함수의 기본적 이해
+	- 함수 내부 및 외부에 선언 가능하다.
+	- 한번만 초기화된다. : 전역 변수의 특징
+	- 함수 내부에서 선언될 경우 함수 내에서만 접근이 가능하다. : 지역 변수의 특징
+	
+* 보다 빠르게! register 변수 (넘어가기)
+	```c
+	int main(void)
+	{
+		int a;
+		register int b; 	// 레지스터 변수 b선언
+	}
+	
+	```
+```c
+// static_val.c
+#include <stdio.h>
+
+void fct(void);
+
+int main(void)
+{
+	int i;
+	for (i=0;i<5;i++)
+		fct();
+	
+	return 0;
+}
+
+void fct(void)
+{
+	int val = 0;	// static int val=0;
+	val++;
+	printf("%d ", val);
+}
+
+```
+	
+	
+* 재귀 함수의 기본적 이해 : 자기 자신을 다시 호출하는 
+	```c
+	/* recursive_basic.c */
+	#include <stdio.h>
+	
+	void Recursive(void)
+	{
+		printf("Recursive Call! \n");
+		// Recursive();
+	}
+	
+	int main(void)
+	{
+		Recursive();
+		return 0;
+	}
+	```
 * 탈출 조건의 필요성 : 무한 재귀 호출을 피하기 위해서
 * 탈출 조건의 이해
 * 재귀 함수 Design 사례
 
+
+	- 정리하기
+	
 ## 10장. 1차원 배열
-* 배열이란?
+* 배열이란? -> 위와 같은 상황에서 사용한다.
+	- 둘 이상의 동일한 Data type 변수를 동시에 선언하는 효과를 지닌다.
+	- 많은 양의 데이터를 일관적으로 처리해야 하는 경우에 유용하다.
+	- 지역적 특성을 지닐 수도 있고, 전역적 특성을 지닐 수도 있다.
+	
+* C : 하드웨어 제어하는 데 큰 장점이 있다.
+	
 * 배열 선언에 있어서 필요한 것 세 가지
 * 1차원 배열의 접근
 * 배열 선언과 접근의 예
