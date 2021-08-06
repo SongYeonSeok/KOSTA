@@ -110,9 +110,117 @@
 		* A부터 Z까지는 65 ~ 90(decimal)	/ 0x40 ~ 0x4F (hexadecimal)까지
 		* a부터 z까지는 97 ~ 122(decimal) / 0x61 ~ 0x7A (hexadecimal)까지
 	
+	
+	```c
+	#include <stdio.h>
+	#include <conio.h>
+
+
+	// Function Test 프로그램
+	// 기능 : 키보드에서 단일 문자를 입력받고
+	//	 해당 문자가 대문자0/소문자1/특수2/숫자키3 임을 분류 
+	//-> 유형에 대한 특정한 값을 만들어서 값에 따라서 분류를 할 수 있도록
+	//	----- 함수를 선언하고 호출할 것. -- 함수명 : sub
+
+	/* 프로그램을 작성할 때, 누구한테 보여준다고 생각하고 클린하고 작성하고
+	설명을 위해 가능한 많이 주석을 달아 놓자. 주석을 작성하지 않으면 잊어먹는 경우가 많기 때문에
+	나중을 위해 친절하고 상세하게 작성해 두자*/
+
+	int sub(char a);
+
+	int main(void)
+	{
+		int i, j, k;
+		char c;
+
+		c = getch();		// sdl 검사 아니오 체크하기 (하나의 단일 문자를 돌려 받는 일종의 함수이다)
+
+		// 숫자 키인지 아닌지 판별하는 구분 -> 구분하기 위해 ASCII 코드 확인해야 한다. (깃허브에 ASCII 코드 목록 첨부)
+		if (sub(c) == 3)
+		{
+			printf(">입력하신 Key ['%c']는 숫자키 입니다.\n", c);		// 0 ~ 9번 키에 해당하는가?		
+																	// 0 ~ 9 : 48 ~ 57 (decimal)
+																	//-> 컴퓨터 : 0x30 ~ 0x39 (hexadecimal)로 인식
+		}
+		else if (sub(c) == 0)
+		{
+			printf(">입력하신 Key ['%c']는 대문자 키 입니다.\n", c);	// A ~ Z 키에 해당하는가?
+																	// A ~ Z : 65 ~ 90 (decimal) 
+																	//-> 컴퓨터 : 0x41 ~ 0x5A (hexadecimal)로 인식
+		}
+		else if (sub(c) == 1)
+		{
+			printf(">입력하신 Key ['%c']는 소문자키 입니다.\n", c);		// a ~ z 키에 해당하는가?
+																	// a ~ z : 97 ~ 122 (decimal)
+																	//-> 컴퓨터 : 0x61 ~ 0x7A (hexadecimal)로 인식
+		}
+		else
+		{
+			printf(">입력하신 Key ['%c']는 특수문자 키 입니다.\n", c);
+		}
+	}
+
+	int sub(char a)		// 입력 값에 대한 키 분류 값 리턴
+	{
+		int ret;		// 분류 값
+
+		if (a >= 0x30 && a <= 0x39) ret = 3;		// 숫자 키 : 3
+													
+
+		else if (a >= 0x41 && a <= 0x5A) ret = 0; 	// 대문자 키 : 0
+		else if (a >= 0x61 && a <= 0x7A) ret = 1; 	// 소문자 키 : 1
+		else ret = 2;					// 특수문자 키(기타 나머지) : 2
+
+		return ret;
+	}
+
+	```
 * 변수의 특성에 따른 분류
+	* 지역 변수(Local Variable) : 중 괄호 내에 선언되는 변수
+	* 전역 변수(Global Variable) : 함수 내에 선언되지 않는 변수
+	* 정적 변수(Static Variable) : 함수 내부, 외부 모두 선언 가능
+	* 레지스터 변수(Register Variable) : 선언에 제한이 많이 따름
+	
 * 지역 변수의 접근 범위
+	* 지역 변수는 선언 된 함수 내에서만 접근 가능
+	- ![image](https://user-images.githubusercontent.com/49339278/128459341-105a45cd-ff6d-497a-97ca-ce9cdb4a32db.png)
+
 * 지역 변수의 메모리상 존재 기간
+	```c
+	int fct_one(void)
+	{
+		int one=10;
+		return 0;
+	}
+	
+	int fct_two(void)
+	{
+		int one=20;
+		int two=30;
+		return 0;
+	}
+	
+	int main(void)
+	{
+		int val=10;
+		fct_one();
+		fct_two();
+		return 0;
+	}
+	```
+	
+	- 1단계
+		- ![image](https://user-images.githubusercontent.com/49339278/128459506-daf3407f-b68c-4283-bd92-22233cc7283c.png)
+
+	- 2단계
+		- ![image](https://user-images.githubusercontent.com/49339278/128459531-fb6e2534-f241-4c60-a3ca-34f20f66a10d.png)
+
+	- 3단계
+		- ![image](https://user-images.githubusercontent.com/49339278/128459560-fe2ebc61-a2f8-4ba8-99a5-685e2ab35f9b.png)
+
+	- 4단계
+		- ![image](https://user-images.githubusercontent.com/49339278/128459577-cbee8b7b-e62b-409e-ae00-a83a6999298f.png)
+
 * 또 다른 형태의 지역 변수
 * 지역 변수의 또 다른 특성
 * 지역변수와 매개변수
