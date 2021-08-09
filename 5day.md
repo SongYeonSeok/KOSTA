@@ -193,8 +193,8 @@
 	```
 * 변수의 특성에 따른 분류
 	* 지역 변수(Local Variable) : 중 괄호 내에 선언되는 변수
-	* **전역 변수(Global Variable)** : 함수 외 선언되는 변수		-> 모두 static이라고 생각하면 된다.
-	* 정적 변수(Static Variable) : 함수 내부, 외부 모두 선언 가능. 하지만 내부에는 사용하지 않는 것을 권장한다.
+	* **전역 변수(Global Variable)** : 함수 외 선언되는 변수		-> 모두 static이라고 생각하면 된다. (중괄호 밖에 선언되는 변수, 가급적 사용. but, local 변수와 중복되지 않도록, 전역 변수의 일므이 식별이 용이한 가능한 길게 작성.)
+	* 정적 변수(Static Variable) : 함수 내부, 외부 모두 선언 가능. 하지만 내부에는 사용하지 않는 것을 권장한다. 
 	* 레지스터 변수(Register Variable) : 선언에 제한이 많이 따름 (신경 쓸 필요가 없다. 안써도 된다.)
 	
 	* 중요한 변수는 처음 시작할 때 한꺼번에 선언하고(전역 변수), 그렇지 않은 것들은 지역 변수로 사용해야 한다.(지역 변수)
@@ -248,7 +248,7 @@
 	- ![image](https://user-images.githubusercontent.com/49339278/128463158-fad91caa-5e47-44ff-b2e3-55e1aa085dd5.png)
 	- 가급적 쓰지 않는 것이 좋다.
 
-* 지역변수와 매개변수 : 매개 변수도 지역 변수의 일종이다. (주의)
+* 지역변수와 매개변수(argument) : 매개 변수도 지역 변수의 일종이다. (주의)
 	- ![image](https://user-images.githubusercontent.com/49339278/128463201-727f0af0-09e2-49da-9ce4-7437dbd62897.png)
 
 * 전역변수 : 변수 명에 주의해야 한다. 가능하면 복잡하고 길고 명확하게 써라. (i, j, k는 전역변수로 쓰지 않고 지역 변수로 써라.)
@@ -257,7 +257,7 @@
 	- 프로그램이 종료될 때까지 존재
 	- 같은 이름의 지역 변수에 의해서 가려지기도 한다.
 
-* static 변수
+* static 변수 
 	- 함수 내부 및 외부에 선언 가능하다.
 	- 한번만 초기화된다. : 전역 변수의 특징
 	- 함수 내부에서 선언될 경우 함수 내에서만 접근이 가능하다. : 지역 변수의 특징
@@ -296,7 +296,7 @@ void fct(void)
 ```
 	
 	
-* 재귀 함수의 기본적 이해 : 자기 자신을 다시 호출하는 
+* 재귀 함수의 기본적 이해 : 자기 자신을 다시 호출하는 형태의 함수 (= 팩토리얼과 비슷하다.)
 	```c
 	/* recursive_basic.c */
 	#include <stdio.h>
@@ -364,7 +364,7 @@ int main(void)
 	
 ## 10장. 1차원 배열
 
-* C : 하드웨어 제어하는 데 큰 장점이 있다.
+* C : 하드웨어 제어하는 데 큰 장점이 있다. (= 배열을 공부할 때, Excel을 생각하면 편리하다.)
   | address | data |
   |:----:|:-----:|
   | 0001 | 01 |
@@ -386,7 +386,7 @@ int main(void)
   * 포인터 : age와 같은 변수 X. 변수가 저장된 주소를 포인터가 접근할 수 있는 것 -> 하드웨어적으로 지식이 있으면 이해하기 쉽다.
   * 그래서 C 언어가 어렵다고 말하는 이유이다.
 
-* 배열 이란? -> 위와 같은 상황에서 사용한다.
+* 배열 이란? -> 위와 같은 상황에서 사용한다. 
 	- 둘 이상의 동일한 Data type 변수를 동시에 선언하는 효과를 지닌다.
 	- 많은 양의 데이터를 일관적으로 처리해야 하는 경우에 유용하다.
 	- 지역적 특성을 지닐 수도 있고, 전역적 특성을 지닐 수도 있다.
@@ -399,11 +399,11 @@ int main(void)
 		- int array[10];	// 배열 선언문 (= 우리가 여행갈 때 숙소 유형과 숙소 이름, 숙소의 방 크기를 일일이 정하는 것과 같다)
 			- int : 배열 요소 자료형
 			- array : 배열 이름
-			- [10] : 배열 길이 
+			- [10] : 배열 길이 (반드시 상수로 지정! 만약에 변수를 쓰고 싶다면, const라는 키워드를 사용해서 작성하여 상수변수를 만들자.)
 			
 * 1차원 배열의 접근
 	- 배열 요소의 위치를 표현 : 인덱스(index)
-	- **인덱스는 0에서부터 시작**	(0을 Zero Base라고 한다.)	cf. R언어는 1부터 시작
+	- **인덱스는 0에서부터 시작**	(0을 Zero Base라고 한다. 즉, 0층)	cf. R언어는 1부터 시작
 		- **base + offset으로 인덱싱이 된다.**
 		- ![image](https://user-images.githubusercontent.com/49339278/128467316-44b85e73-0115-4f78-8294-fcbf1f28f09b.png)
 
@@ -412,6 +412,7 @@ int main(void)
 	int main(void)
 	{
 		int array[10];	// 배열 선언 (선언 완료)
+		
 		array[0]=10;	// 첫 번째 요소 접근 (주의)
 		array[1]=20;	// 두 번째 요소 접근 (주의)
 		array[2]=30;	// 세 번째 요소 접근 (주의)
@@ -420,7 +421,7 @@ int main(void)
 	}
 	```
 	
-	- array[s] = 10;	// S+1 번째 요소에 10을 대입하라.
+	- array[s] = 10;	// S+1 번째 요소에 10을 대입하라. (배열과 반복문은 세트라고 할 수 있다.)
 	
 	```c
 	// array1.c : 평균 구하는 문제
@@ -447,92 +448,11 @@ int main(void)
 		return 0;
 	}
 	```
-	
-* 선언과 동시에 초기화
-	```c
-	int main(void)
-	{
-		int arr1[5] = {1, 2, 3, 4, 5};
-		int arr2[] = {1, 3, 5, 7, 9};
-		int arr3[5] = {1, 2}
-	}
-	```
-	
-	- ![image](https://user-images.githubusercontent.com/49339278/128467891-88b92f1f-0c3a-4f95-9bfa-9430881780c5.png)
-	- ![image](https://user-images.githubusercontent.com/49339278/128467948-604ba6e6-c12f-481a-8863-57287ed96572.png)
-	- ![image](https://user-images.githubusercontent.com/49339278/128467961-e64060e5-6539-4725-9e8b-cb7d5ca84192.png)
-
-	
-* 문자열 상수
-	- 문자열이면서 상수의 특징을 지닌다.
-	```c
-	printf("Hello World!"\n");
-	```
-	
-* 문자열 변수
-	- 문자열이면서 변수의 특징을 지닌다.
-	```c
-	char str1[5] = "Good";
-	char str2[] = "morning";
-	```
-      
-* 문자열의 특징
-  * 문자열은 널(null)문자를 끝에 지닌다.
-  * 널(null) 문자 : '\0'(ASCII code : 0)
-      - ![image](https://user-images.githubusercontent.com/49339278/128629649-d7c47581-cfea-433c-8d13-6c082710dc4e.png)
-
-* 널(null) 문자를 지녀야 하는 이유
-  - 문자열의 끝을 표현하기 위해서
-  - 쓰레기 값과 실제 문자열의 경계를 나타내기 위해
-  - printf 함수는 널 문자를 통해서 출력의 범위를 결정짓는다.
-    ```c
-    int main(void)
-    {
-      char str[100]="Hello World!";
-      printf("%s \n", str);
-      
-    ```
-* 문자열과 char형 배열의 차이점
-  ```c
-  char arr1[] = "abc";
-  char arr2[] = {'a', 'b', 'c'};
-  char arr3[] = {'a', 'b', 'c', '\0'};   
-      
-  ```    
-
-```c
-// va_str.c
-#include <stdio.h>
-      
-int main(void)
-{
-  int i;
-  char ch;
-  char str[6] = "Hello";
-      
-  printf("--변경 전 문자열--\n");
-  printf("%s \n", str);
-      
-  for(i=0; i<6; i++) printf("%c | ", str[i]);
-      
-  // 문자열 변경
-  for(i=0; i<3; i++)
-  {
-    ch = str[4-i];
-    str[4-i] = str[i];
-    str[i] = ch;      
-  }      
-      
-  printf("\n\n--변경 후 문자열--\n");
-  printf("%s \n", str);
-  return 0;      
-}     
-```
 
 ```c
 // ArrayTest.c
 #include <stdio.h>
-#include <stdlib.h>		// standard library.h			
+#include <stdlib.h>   // standard library.h			
 #include <math.h>     // 수학적인 계산이 필요할 때 사용
 #include <conio.h>
 #include <time.h>     // 랜덤 변수를 만들기 위해 사용
@@ -542,7 +462,7 @@ int main()
 {
   int i, j, k;
   double average, total;    
-  double kor[students], eng[students], mat[students];
+  double kor[students], eng[students], mat[students];		// 배열의 선언
       /* C에서 배열의 개수를 선언할 때 반드시 변수가 아닌 상수를 지정해야 한다.
       하지만, 그럼에도 변수를 쓰고 싶다면 global 변수를 생성한 후, const를 써서 변수를 상수화 시켜야 한다.
       */
@@ -553,14 +473,14 @@ int main()
   srand(time(NULL));    // time이라는 변수가 정의되어 있지 않다.
                         // seed 지정 -> 이것으로 인해 디버깅할 때마다 다른 자료가 나온다.
       
-  for (i = 0l i < students; i++)
+  for (i = 0; i < students; i++)
   {
       kor[i] = (double) ((rand() % 1000) + 1) / 10;   // 난수 발생기 rand() : 정수 0 ~ 100.0 -> 0.1 ~ 100.0
                                                       // rand() : 정수, 나머지 계산도 전부 정수이다. 따라서 float형으로 변환
                                                       // float형으로 변환하기 위해서는 강제 형 변환(casting) 필요
       
       eng[i] = (double) ((rand() % 1000) + 1) / 10;   // 난수 발생기 rand() : int 0 ~ 100.0 -> 0~999 -> 1~1000 -> 0.1 ~ 100.0
-      mat[i] = (double) ((rand() % 1000) + 1) / 10;
+      mat[i] = (double) ((rand() % 1000) + 1) / 10;	// 다음 숫자도 global const variable로 지정할 수도 있다. 따라서, 상수는 가급적 쓰지 않고 변수를 쓰도록 하자.
       
       
   }    
@@ -617,6 +537,124 @@ int main()
                         
       
 ```      
+
+* 선언과 동시에 초기화
+	```c
+	int main(void)
+	{						// 상황극 : 단체로 숙소를 잡을 때,
+		int arr1[5] = {1, 2, 3, 4, 5};		// 예1 : 5명이 왔으니, 방 5개 주세요.
+		int arr2[] = {1, 3, 5, 7, 9};		// 예2 ; 5명이 왔으니 눈치껏 방 잡아주세요.
+							// (멤버수에 따라 방 잡아줌) 
+		int arr3[5] = {1, 2};			// 예3 : 2명이 왔으니 방 5개 주세요. 
+							// 이 경우는 {1, 2, 0, 0, 0}으로 입력됨
+	}
+	```
+	
+	- ![image](https://user-images.githubusercontent.com/49339278/128467891-88b92f1f-0c3a-4f95-9bfa-9430881780c5.png)
+	- ![image](https://user-images.githubusercontent.com/49339278/128467948-604ba6e6-c12f-481a-8863-57287ed96572.png)
+	- ![image](https://user-images.githubusercontent.com/49339278/128467961-e64060e5-6539-4725-9e8b-cb7d5ca84192.png)
+
+	
+* 문자열 상수
+	- 문자열이면서 상수의 특징을 지닌다. '상수처럼 변하는 것이 아니다'로 인식하게 된다.
+	```c
+	printf("Hello World!"\n");
+	```
+	
+* 문자열 변수
+	- 문자열이면서 변수의 특징을 지닌다.
+	- 문자열은 꼭 null(\0)로 끝난다.
+	```c
+	char str1[5] = "Good";		// Good\0; G : 코드값, \0(null) 문자를 담을 마지막 공간이 필요!
+	char str2[] = "morning";	// morning\0 ; m : 코드값
+	```
+	
+	```c
+	// ar_str.c
+	
+	#include <stdio.h>
+	
+	int main(void)
+	{
+	  char str1[5] = "Good";
+	  char str2[] = "morning";
+	  
+	  printf("%s \n", str1);
+	  printf("%s %s \n", str1, str2);
+	  
+	  return 0;
+	}
+	
+	/* 결과
+	Good
+	Good Morning
+	*/
+	```
+
+* 문자열은 char(문자형 데이터) 배열이다. 
+
+* 문자열의 특징
+  * 문자열은 널(null)문자를 끝에 지닌다.
+  * 널(null) 문자 : '\0'(ASCII code : 0)
+      - ![image](https://user-images.githubusercontent.com/49339278/128629649-d7c47581-cfea-433c-8d13-6c082710dc4e.png)
+
+* 문자열과 문자 배열의 차이점
+  * 문자열은 상수이지만, 문자 배열은 아니다.
+    * char str[6] = "Hello";  // str[6] : 문자 배열(변수), "Hello" : 문자열(상수)
+      * str[0] = H, str[1] = e, str[2] = l, str[3] = l, str[4] = o, str[5] = \n(null) 저장
+    
+  
+* 널(null) 문자를 지녀야 하는 이유
+  - 문자열의 끝을 표현하기 위해서
+  - 쓰레기 값과 실제 문자열의 경계를 나타내기 위해
+  - printf 함수는 널 문자를 통해서 출력의 범위를 결정짓는다.
+    ```c
+    int main(void)
+    {
+      char str[100]="Hello World!";
+      printf("%s \n", str);
+      
+    ```
+* 문자열과 char형 배열의 차이점
+  * 문자열은 상수로, 무조건 null이 붙어야 되는데, char형 배열은 그러한 문자열을 갖기 위한 배열로, null을 붙여도 되고 붙이지 않아도 된다.
+  ```c
+  char arr1[] = "abc";	// 배열의 크기가 4 (null 포함)
+  char arr2[] = {'a', 'b', 'c'}; // 배열의 크기가 3
+  char arr3[] = {'a', 'b', 'c', '\0'};    // 배열의 크기가 4
+      
+  ```    
+  
+```c
+// va_str.c
+#include <stdio.h>
+      
+int main(void)
+{
+  int i;
+  char ch;
+  char str[6] = "Hello";
+      
+  printf("--변경 전 문자열--\n");
+  printf("%s \n", str);		// Hello 출력
+      
+  for(i=0; i<6; i++) 
+    printf("%c | ", str[i]);  // str[i] 출력
+      
+  // 문자열 변경 (글자 앞뒤 순서 바꾸기)
+  for(i=0; i<3; i++)
+  {
+    ch = str[4-i];
+    str[4-i] = str[i];
+    str[i] = ch;      
+  }      
+      
+  printf("\n\n--변경 후 문자열--\n");
+  printf("%s \n", str);
+  return 0;      
+}     
+```
+
+
 - scanf 함수를 이용하여 문자열을 입력받아 한 문자씩 띄어서 출력하시오.
   * char 배열을 이용할 것 "abcde" -> "a b c d e"
 - 대소문자가 혼합된 입력받은 문자열을 모두 대문자로 일괄 변환하기
