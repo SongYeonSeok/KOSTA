@@ -251,3 +251,156 @@ int main(void)
 위치의 문자를 출력하시오. 
   * 문자 배열을 사용하고, str[i] index를 사용하면 된다.
   * 전자의 부분은 포인터를 사용한다.
+
+```c
+//pointer_myway.c
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+int CharToInt(int a)
+{
+	int ret;		// 분류 값
+	ret = a - 0x30;
+
+// switch (a)
+//	{
+//	case 0x30: ret = 0;
+//	case 0x31: ret = 1;
+//	case 0x32: ret = 2;
+//	case 0x33: ret = 3;
+//	case 0x34: ret = 4;
+//	case 0x35: ret = 5;
+//	case 0x36: ret = 6;
+//	case 0x37: ret = 7;
+//	case 0x38: ret = 8;
+//	case 0x39: ret = 9;
+//
+//	}   /ctrl + k,c (블록 주석처리)
+
+	return ret;
+}
+
+const int num = 100;		// 입력할 최대 글자 수
+int pointer(void)
+{
+	int i, j, k;
+	char str[num];
+	char c;
+	char paste[num * 2]; // 복사 배열
+
+	printf("영문과 숫자를 포함하여 아무 글이나 작성하세요: ");
+	scanf("%s", str);		// 배열은 &연산자 안하기
+
+	for (i = 0; i < num; i++)
+	{
+		
+		paste[2* i] = str[i];		// 포인터
+		paste[2*i + 1] = ' ';		// "" : 문자열, '' : 문자
+	} 
+
+
+	while (1)
+	{
+		c = getch();
+		if (CharToInt(c) >= 0 && CharToInt(c) <= 9)
+		{
+			printf("%c", paste[CharToInt(c)]);
+			continue;
+		}
+		break;
+	}
+	//switch (CharToInt(c))
+ //{
+ //	case 0: printf("%c", paste[CharToInt(c)]); break;	// %c로 변환
+	//	case 1:	printf("%c", paste[CharToInt(c)]);	break;
+	//	case 2: printf("%c", paste[CharToInt(c)]); break;
+	//	case 3: printf("%c", paste[CharToInt(c)]); break;
+	//	case 4: printf("%c", paste[CharToInt(c)]); break;
+	//	case 5: printf("%c", paste[CharToInt(c)]);	break;
+	//	case 6: printf("%c", paste[CharToInt(c)]); break;
+	//	case 7: printf("%c", paste[CharToInt(c)]);	break;
+	//	case 8: printf("%c", paste[CharToInt(c)]);	break;
+	//	case 9: printf("%c", paste[CharToInt(c)]);	break; 
+	//}
+	return 0;
+}
+
+int main()
+{
+	pointer();
+
+}
+```
+
+```c
+//pointer_teacheradvise.c
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+// 프로그래밍의 상당 부분은 '문자열 처리'이다!
+// 문자열의 길이를 어떻게 아는가? 함수를 만들어 보자!
+
+// function define (습관화 하기)
+//		Prototype  :  int str_len(char *str)	// 포인터 (문자열의 포인터를 매개변수로 받는다.)
+// 문자열 str을 받아서 해당 문자열의 길이를 되돌려 줌
+// 전제 : 문자열 끝에는 null이 붙어 있다.
+int str_len(char* str)		// 문자열 == 문자 배열
+{
+	int ret = 0;	
+//	while (*(str + ret++)); return ret;
+	
+	while (1)
+	{
+		if (*(str + ret) != 0) ret++;	// str[ret], 전제를 이용한 방법
+		else break;		
+	}
+	return ret;
+}
+
+int solution1()
+{
+	//문1) scanf 함수를 이용하여 문자열을 입력 후
+	//     해당 문자열을 한 글자씩 공백을 삽입하여 출력하시오.
+	//     > 12345 ==> 1_2_3_4_5
+	// 
+	//문2) scanf 함수를 이용하여 문자열을 입력한 후
+	//     getch() 함수를 이용하여 숫자 키를 누르면
+	//     해당 위치의 문자를 출력하시오.
+
+	char buf[100];		// buffer : 버퍼 (임시 저장용, 배열, 포인터)
+	int i, j, k;
+
+	printf("문자열을 입력하세요: "); scanf("%s", buf);	// 배열은 &연산자 쓰는 것 아니다.
+	printf("입력문자역 [%s] 의 길이는 %d 입니다. \n", buf, j = str_len(buf));		// 효율적
+
+	for (i = 0; i < j; i++)		// for문 안에 함수를 넣을 수는 있지만, 바람직하지 않다. (복잡한 계산이 들어간 함수일 경우, 처리속도가 느려질 수 있다.)
+	{
+		printf("%c_", buf[i]);
+	}
+
+
+
+	while (1)
+	{
+		k = getch() - 0x30;	// 0 ~ 9 숫자키 (ASCII 0x30 ~ 0x39) 입력
+		if (k >= 0 && k <= 9)
+		{
+			printf("%c", buf[k]);
+			continue;		// 순환
+		}
+		break;
+	}
+
+
+	return 0;
+}
+
+int main()
+{
+
+	solution1();
+}
+
+```
