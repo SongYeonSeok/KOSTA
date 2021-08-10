@@ -359,9 +359,13 @@ int main()
 // 문자열 str을 받아서 해당 문자열의 길이를 되돌려 줌
 // 전제 : 문자열 끝에는 null이 붙어 있다.
 int str_len(char* str)		// 문자열 == 문자 배열
+				// 포인터로 문자열을 받음
+				// [] == *이므로, char str[]도 가능하다.
 {
 	int ret = 0;	
-//	while (*(str + ret++)); return ret;
+//	while (*(str + ret++)); return ret;  // 배열과 포인터와 같다고 생각하였으니, 배열에 값이 없으면
+						// null(0) 표시가 되는 것으로, 포인터도 마찬가지로
+						// 값이 없다면 null(0)으로 표시되는 것이다.
 	
 	while (1)
 	{
@@ -381,15 +385,21 @@ int solution1()
 	//     getch() 함수를 이용하여 숫자 키를 누르면
 	//     해당 위치의 문자를 출력하시오.
 
-	char buf[100];		// buffer : 버퍼 (임시 저장용, 배열, 포인터)
+	char buf[512];		// buffer : 버퍼 (임시 저장용, 배열, 포인터)
+				// 세상에는 착한 사용자는 없으니, 블랙 컨슈머에 대비하기 위해 최대 입력
+				// 길이 512를 지정하겠다. (길이를 지정하지 않는것은 안된다고 한다...)
 	int i, j, k;
 
 	printf("문자열을 입력하세요: "); scanf("%s", buf);	// 배열은 &연산자 쓰는 것 아니다.
-	printf("입력문자역 [%s] 의 길이는 %d 입니다. \n", buf, j = str_len(buf));		// 효율적
+	
+	//printf("입력문자열 [%s] 의 길이는 %d 입니다. \n", buf, j = str_len(buf));		// 효율적
+	j = str_len(buf)
+	printf("입력문자열 [%s] 의 길이는 %d 입니다. \n", buf, j);	
 
 	for (i = 0; i < j; i++)		// for문 안에 함수를 넣을 수는 있지만, 바람직하지 않다. (복잡한 계산이 들어간 함수일 경우, 처리속도가 느려질 수 있다.)
 	{
-		printf("%c_", buf[i]);
+		if (i == (j - 1)) printf("%c", buf[i]);
+		else printf("%c_", buf[i]);
 	}
 
 
