@@ -300,14 +300,17 @@ char* arr3[30];
 
 ![image](https://user-images.githubusercontent.com/49339278/128835981-e58787f6-5cbe-4446-bc29-e4b255aaf963.png)
 
+* C언어의 변수와 연산자의 keyword가 40여개뿐이라서 제약조건이 작아 유연성이 높다.
 
 ## 15장. 포인터와 함수에 대한 이해
 * 기본적인 인자의 전달 방식
-  * 값의 복사에 의한 전달
+  * 값의 복사에 의한 전달 (Call-by-Value, 가장 일반적)
   * ![image](https://user-images.githubusercontent.com/49339278/128949727-c2504541-8353-45fc-9298-091cf1a92568.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/128963885-f5da9e4f-6ec8-4357-b1ba-9f95004b0209.png)
+  * 스택(Stack) 영역을 통해서 인수를 전달하거나 결과를 전달하거나 다른 역할을 수행한다.
 
 * 배열의 함수 인자 전달 방식
-  * 배열 이름(배열 주소, 포인터)에 의한 전달
+  * 배열 이름(배열 **주소, 포인터**)에 (참조 ; reference에) 의한 전달 (Call-by-Reference)
   * ![image](https://user-images.githubusercontent.com/49339278/128949753-04f09cfd-b0f1-49dd-b5b8-8c364afa8af5.png)
 
 * 배열 이름, 포인터의 sizeof 연산
@@ -321,7 +324,7 @@ char* arr3[30];
     int arr[5];
     int* pArr = arr;
     
-    printf("%d \n", sizeof(arr) );  // 20 출력
+    printf("%d \n", sizeof(arr) );  // 20 출력 (4 * 5)
     printf("%d \n", sizeof(pArr) ); // 4 출력
     return 0;
   }
@@ -330,6 +333,7 @@ char* arr3[30];
 * ```int *pArr vs int pArr[]```
   * 둘 다 같은 의미를 지닌다.
   * 선언 "int pArr[]"은 함수의 매개 변수 선언 시에만 사용 가능
+  * ```*``` = 포인터 = 배열
 
 ```c
 int function(int pArr[])
@@ -364,7 +368,7 @@ int function(int pArr[])
   }
   ```
   
-  * Call-By-Value에 의한 swap
+  * Call-By-Value에 의한 swap (결과 안나옴)
   ```c
   int main(void)
   {
@@ -416,14 +420,18 @@ int function(int pArr[])
     ![image](https://user-images.githubusercontent.com/49339278/128950408-5b11c3c6-f356-417b-8d66-e97ae6a62675.png)
 
 
-* scanf 함수 호출 시 &를 붙이는 이유
+* scanf 함수 호출 시 &를 붙이는 이유 : 주소를 전달하기 위해서
+  * scanf함수에서 keyboard에서 입력된 값을 원하는 형태대로 변환한 다음, 
+  이 변수에 값을 써 넣어서 반환해라는 것
   * case 1
   ```c
   int main(void)
   {
     int val;
-    scanf("%d", &val);
+    int *p = &val;
+    scanf("%d", &val);  // scanf("%d, p); -> & 붙이지 않아도 된다. p가 주소값이기 때문
   ```
+  * 입력된 것이 배열이라고 했을 때, 배열명 자체가 주소이므로 &를 붙이지 않아도 된다.
   * case 2
     int main(void)
     {
@@ -431,10 +439,10 @@ int function(int pArr[])
       printf("문자열 입력 : ");
       scanf("%s", str);
 
-* 포인터가 가리키는 변수의 상수화
+* 포인터가 가리키는 변수의 상수화 (const 즐겨 쓰지 말자.)
   ```c
   int a = 10;
-  const int* p = &a;
+  const int* p = &a;  // p를 상수로 선언 => 초기화 이후 변경이 불가
   *p = 30;   // error
   a = 30;    // ok
   ```
@@ -488,4 +496,218 @@ int function(int pArr[])
   * (단, 배열과 함수를 이용해서 구성할 것. 함수는 배열을 매개변수로 받아서 그 중
   * 가장 작은 수를 되돌려 주는 함수이다.)
 
-## 16장. 포인터의 
+## 16장. 포인터의 포인터
+* 포인터의 포인터
+  * 더블 포인터라고 한다.
+  * 싱글 포인터의 주소 값을 저장하는 용도의 포인터
+  ```c
+  int main(void)
+  {
+    double val = 3.14;
+    double *ptr1 = &val;   // 싱글 포인터
+    double **ptr2 = &ptr1; // 더블 포인터
+  }
+  ```
+  ![image](https://user-images.githubusercontent.com/49339278/128966000-dd0c9c7e-3b73-4c7c-8bdd-2f26e1715d9b.png)
+  ![image](https://user-images.githubusercontent.com/49339278/128966016-df0014d7-d2ea-4061-9170-09532da13944.png)
+
+* 더블 포인터에 의한 Call-by-Reference
+  - 다음 그림이 제시하는 프로그램의 구성을 통한 이해
+    * ![image](https://user-images.githubusercontent.com/49339278/128971664-75f73827-268b-4cde-883c-9063cde533a8.png)
+
+* 구현 사례 1 : 효과 없는 swap 함수의 호출
+```c
+// ptr_swap1.c
+#include <stdio.h>
+
+void pswap(int* p1, int* p2);
+
+int main(void)
+{
+  int A = 10, B = 20;
+  int *pA, *pB;
+  pA = *pA, pB = *pB;
+  
+  pswap(pA, pB);
+  
+  // 함수 호출 후
+  printf("pA가 가리키는 변수 : %d \n", *pA);
+  printf("pB가 가리키는 변수 : %d \n", *pB);
+  
+  return 0;
+}
+
+void pswap(int *p1, int *p2)
+{
+  int *temp = p1;
+  p1 = p2;
+  p2 = temp;
+}
+```
+![image](https://user-images.githubusercontent.com/49339278/128971891-3b83fde9-6a06-475d-adee-644ee57757c1.png)
+
+* 구현 사례 2 : 더블 포인터 입장에서의 swap
+```c
+// ptr_swap2.c
+#include <stdio.h>
+
+void pswap(int **p1, int **p2);
+
+int main(void)
+{
+  int A = 10, B = 20;
+  int *pA, *pB;
+  pA = &A, pB = &B;
+  
+  pswap(&pA, &pB);
+  
+  // 함수 호출 후
+  printf("pA가 가리키는 변수 : %d \n", *pA);
+  printf("pB가 가리키는 변수 : %d \n", *pB);
+  
+  return 0;
+}
+
+void pswap(int **p1, int **p2)
+{
+  int* temp;
+  temp = *p1;
+  *p1 = *p2;
+  *p2 = temp;
+}
+
+```
+![image](https://user-images.githubusercontent.com/49339278/128972094-16853669-0d53-4d29-91bb-2dd63dbb6eaa.png)
+
+* 포인터 배열과 포인터 타입
+  * 1차원 배열의 경우 배열이름이 가리키는 대상을 통해서 타입이 결정된다.
+  * 포인터 배열이라고 하더라도 마찬가지이다.
+  
+  ```c
+  int* arr1[10];
+  double* arr2[20];
+  char* arr3[30];
+  ```
+## 17. 함수 포인터와 void 포인터
+* void 포인터 : type이 없는 포인터를 말한다.
+* pointer : (함수, 상수, 변수의) 주소를 가리키는 변수
+
+* 함수 포인터의 이해 (굳이 쓸 일은 없을 것이다.)
+  ![image](https://user-images.githubusercontent.com/49339278/128966123-ab2229a2-68f4-47d4-a0b8-106ec14c2ad2.png)
+
+* 함수 이름의 포인터 타입을 결정짓는 요소
+  * SDK와 연결된다고 생각하기
+  - 리턴 타입 + 매개 변수 타입
+  ```c
+  int fct1 (int a)
+  {
+    a++;
+    return a;
+  }
+  
+  // int (*fPtr1) (int);  // int : 선언
+  // == fPtrl(10) = fct1;
+  ```
+  
+  ```c
+  double fct2(double a, double b)
+  {
+    double add = a+b;
+    return add;
+  }
+  
+  // double (*fPtr2) (double, double);
+  
+  ``` 
+  
+* void형 포인터란 무엇인가? (= 무소속 포인트. 사용할 때는 casting)
+  * 원래 void는 정해지지 않은 데이터 타입어서 포인터를 사용할 수 없는데, void 포인터는 임시적인 용도로 사용된다. 실제로 사용할 때 casting(강제형변환)을 사용한다.
+  * 자료형에 대한 정보가 제외된, 주소 정보를 담을 수 있는 형태의 변수
+  * 포인터 연산과, 메모리 참조와 관련된 일에 활용할 수 없다.
+  
+  ```c
+  // rightway.c
+  int main(void)
+  {
+    char c = 'a';
+    int n = 10;
+    void* vp;  // void 포인터 선언
+    vp = &c;
+    vp = &n;
+    ...
+
+  ```
+  
+  ```c
+  // wrongway.c
+  
+  int main(void)
+  {
+    int n = 10;
+    void* vp = &n;
+    *vp = 20;    // error
+    vp++;        // error
+  ```
+  
+  ```c
+  // main_age.c
+  #include <stdio.h>
+  
+  int main(int argc, char **argv)
+  {
+    int i = 0;
+    printf("전달된 문자열의 수 : %d \n", argc);
+    
+    for (i=0;i<argc;i++)
+      printf("%d번째 문자열 : %s \n", i+1, argv[i]);
+      
+    return 0;
+  }
+  ```
+  
+  * VoidTest 예제 
+  * ![image](https://user-images.githubusercontent.com/49339278/128972864-db9d2d24-e5ae-46b0-9a96-cb991fd3e85e.png)
+
+* Reference의 이해
+* ![image](https://user-images.githubusercontent.com/49339278/128972885-b1d3ac73-af18-4a0c-836a-64de7ca73354.png)
+
+* reference 관련 예제와 reference의 선언
+* ![image](https://user-images.githubusercontent.com/49339278/128972960-193764d6-ae5f-43fd-b547-822d2f29d623.png)
+
+* reference의 선언 가능 범위
+* ![image](https://user-images.githubusercontent.com/49339278/128972994-d563ea0b-e6bd-4127-9011-cba345e896a1.png)
+
+* 포인터 변수 대상의 reference 선언
+* ![image](https://user-images.githubusercontent.com/49339278/128973061-1e01d3e7-e9a2-4a69-9d08-4dd8aefe6931.png)
+
+* Call-by-value & Call-by-reference
+* ![image](https://user-images.githubusercontent.com/49339278/128973086-f963cb7c-70ee-4d01-9c42-07fa8ce35ff1.png)
+
+* Call-by-address? Call-by-reference!!
+* ![image](https://user-images.githubusercontent.com/49339278/128973122-6bd5ab2f-ef64-4330-964e-dedbab5b84a9.png)
+
+* reference를 이용한 Call-by-reference
+* ![image](https://user-images.githubusercontent.com/49339278/128973174-c70e3c9d-f6a4-4414-bce7-519ea031d310.png)
+
+* const reference
+* ![image](https://user-images.githubusercontent.com/49339278/128973205-b1abf658-341f-4810-a46b-0f6ccf23524f.png)
+
+* 반환형이 참조이고 반환도 참조로 받는 경우
+* ![image](https://user-images.githubusercontent.com/49339278/128973237-8486f1b0-1591-416d-8381-4333adad5017.png)
+
+* 반환형은 참조이되 반환은 변수로 받는 경우
+* ![image](https://user-images.githubusercontent.com/49339278/128973397-300c2ff4-352f-4a03-97de-d58d773cbc4c.png)
+
+* 참조를 대상으로 값을 반환하는 경우
+* ![image](https://user-images.githubusercontent.com/49339278/128973467-9b86c692-c145-4349-a9fc-f3d6c2ccdaa8.png)
+
+* 잘못된 참조의 반환
+* ![image](https://user-images.githubusercontent.com/49339278/128973485-dce3fe94-0a6b-45ec-9259-0c3f797eadd0.png)
+
+* const reference의 또 다른 특징
+* ![image](https://user-images.githubusercontent.com/49339278/128973513-dc790989-5c7d-41b1-94c9-d4abfd953c14.png)
+
+* reference의 상수 참조
+* ![image](https://user-images.githubusercontent.com/49339278/128973535-cf07c1f5-52a1-49f4-ad78-e5bf431d5141.png)
+
+* 다음주 비대면 예정
