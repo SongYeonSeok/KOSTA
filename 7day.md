@@ -497,7 +497,7 @@ int function(int pArr[])
   * 가장 작은 수를 되돌려 주는 함수이다.)
 
 ## 16장. 포인터의 포인터
-* 포인터의 포인터
+* 포인터의 포인터 (= string array)
   * 더블 포인터라고 한다.
   * 싱글 포인터의 주소 값을 저장하는 용도의 포인터
   ```c
@@ -589,6 +589,7 @@ void pswap(int **p1, int **p2)
   char* arr3[30];
   ```
 ## 17. 함수 포인터와 void 포인터
+* 함수 포인터는 잘 쓰지 않지만, 알고는 있어야 한다.
 * void 포인터 : type이 없는 포인터를 말한다.
 * pointer : (함수, 상수, 변수의) 주소를 가리키는 변수
 
@@ -817,8 +818,8 @@ struct person {
 
 int main()
 {
-  struct person man = {"Thomas", "354-00xx"};   // 초기화 과정
-  struct person * pMan;
+  struct person man = {"Thomas", "354-00xx"};   // 초기화 과정(변수)
+  struct person * pMan; // 포인터
   pMan = &man;
   
   // 구조체 변수를 이용한 출력
@@ -829,7 +830,7 @@ int main()
   printf("name : %s\n", (*pMan).name);
   printf("phone : %s\n", (*pMan).phone);
   
-  // 구조체 포인터를 이용한 출력2 : ->
+  // 구조체 포인터를 이용한 출력2 : ->  
   printf("name : %s\n", pMan->name);
   printf("phone : %s\n", pMan->phone);
   return 0;
@@ -857,11 +858,64 @@ int main()
   struct perInfo info = {"Korea Seoul", "333-4444");
   struct person man = {"Mr.Lee", "820204-xxxx512");
   
-  man
+  man.info = &info;
+  
+  printf("name : %s\n", man.name);
+  printf("pID : %s\n", man.pID);
+  printf("addr : %s\n", man.info -> addr);
+  printf("tel : %s\n", man.info -> tel);
+  return 0;
 }
 ```
 
-* ppt 보고 정리하기
+```c
+#include <stdio.h>
+
+struct persoon {
+  char name[20];
+  char pID[20];
+  struct person* frnd;
+};
+
+int main()
+{
+  struct person man1 = {"Mr.Lee", "820204-0000512"};
+  struct person man2 = {"Mr.Lee's Friend", "820000-0000101"};
+  
+  man1.frnd = &man2;
+  
+  printf("[Mr.Lee]\n");
+  printf("name : %s\n", man1.name);
+  printf("pID : %s\n", man1.pID);
+  
+  printf("[His Friend]\n");
+  printf("name : %s\n", man1.frnd->name);
+  printf("pID : %s\n", man1.frnd->pID);
+  return 0;
+}
+```
+
+* 구조체 변수와 주소 값의 관계
+```c
+// pointer_pointer.c
+#include <stdio.h>
+
+struct simple{
+  int data1;
+  int data2;
+};
+
+int main()
+{
+  struct simple s = {1, 2};
+  
+  printf("address1 : %d\n", &s);
+  printf("address2 : %d\n", &(s.data1));
+  return 0;
+}
+```
+
+![image](https://user-images.githubusercontent.com/49339278/128999198-71a88362-0f7c-41d7-af03-0fa05b5b9282.png)
 
 * 구조체의 byte 수 : 모른다. 그 안에 있는 멤머 종류와 바이트 수에 따라 다르게 설정된다.
   * ex)
