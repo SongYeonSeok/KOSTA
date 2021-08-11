@@ -710,4 +710,166 @@ void pswap(int **p1, int **p2)
 * reference의 상수 참조
 * ![image](https://user-images.githubusercontent.com/49339278/128973535-cf07c1f5-52a1-49f4-ad78-e5bf431d5141.png)
 
-* 다음주 비대면 예정
+# 6. 구조체(Struct*ure*)와 사용자 정의 자료형
+* 구조체의 정의 : 하나 이상의 기본 자료형을 기반으로 사용자 정의 자료형을 만들 수 있는 문법 요소
+```c
+struct point  // point(점)라는 이름의 구조체 선언, struct : 키워드
+{
+  int x;   // 구조체 멤버 int x
+  int y;   // 구조체 멤버 int y
+}
+```
+
+* 구조체 변수의 선언
+```c
+struct point {    // data type
+  int x;
+  int y;
+};
+
+int main(void)
+{
+  struct point p1, p2, p3;
+  ...
+  return 0;
+}
+```
+ * ![image](https://user-images.githubusercontent.com/49339278/128988195-2c38d23a-9206-4839-bce1-fc7c0028f0cb.png)
+
+* 구조체 변수의 접근(access)
+```c
+struct point {
+  int x;
+  int y;
+};
+
+int main(void)
+{
+  struct point p1;
+  p1.x = 10;      // p1의 멤버 x에 10을 대입
+  p1.y = 20;      // p1의 멤버 y에 20을 대입
+  ...
+  return 0;
+}
+```
+
+* 구조체 변수의 초기화
+  * 배열 초기화 문법과 일치
+  ```c
+  struct person {
+    char name[20];
+    char phone[20];
+    int age;
+  };
+  
+  int main(void)
+  {
+    struct person p ={"Free Lec", "02-3142-6702", 20};
+    ...
+    return 0;
+  }
+  ```
+  ![image](https://user-images.githubusercontent.com/49339278/128989363-f41ef931-ef30-4f7e-9d74-3f600d5c1ccf.png)
+
+* 구조체 배열의 선언
+```c
+struct person {
+  char name[20];
+  char phone[20];
+  int age;
+};
+
+int main(void)
+{
+  struct person pArray[10];
+  ...
+  return 0;
+}
+```
+![image](https://user-images.githubusercontent.com/49339278/128990010-1e344ed5-69c6-470a-876b-978c76d38682.png)
+
+* 구조체 배열 요소의 접근
+  * 초기화 수준에서 값을 넣어주지 않는다면, strcpy()함수를 사용하여 배열 요소에 접근하여야 한다.
+  * 즉, name = "홍길동"와 같이 값을 입력할 수 없다.
+```c
+pArray[1].age = 10;                   // 두 번째 요소의 age에 접근
+strcpy(pArray[1].name, "홍길동");     // 두 번째 요소의 name에 접근
+strcpy(pArray[1].phone, "333-3333");  // 두 번째 요소의 phone에 접근
+```
+![image](https://user-images.githubusercontent.com/49339278/128990439-6093411c-8c6a-4bb2-8a49-6e84daecdf52.png)
+
+  * strcpy : #include <string.h>의 string-copy로, 문자열 복사 함수이다.
+    * strcpy(char* dest, char* syc)
+  * 저수준 함수 = Low Level Function -> C언어의 함수 대부분이 함수 내에서 모두 처리하는 저수준 함수이다.
+
+* 구조체와 포인터
+  * 모든 data type에 포인터가 적용이 될 수가 있다. 심지어 void까지도 적용이 가능하다. 심지어 function도 가능
+  * 따라서, 구조체에도 포인터를 사용할 수 있다.
+  1. 첫째 : 구조체 포인터를 선언하여 구조체 변수를 가리키는 경우
+  2. 둘째 : 구조체의 멤버로 포인터 변수가 선언되는 경우
+
+* 구조체와 배열 그리고 포인터 사용례
+```c
+struct person {
+  char name[20];
+  char phone[20];
+};
+
+int main()
+{
+  struct person man = {"Thomas", "354-00xx"};   // 초기화 과정
+  struct person * pMan;
+  pMan = &man;
+  
+  // 구조체 변수를 이용한 출력
+  printf("name : %s\n", man.name);
+  printf("phone : %s\n", man.phone);
+  
+  // 구조체 포인터를 이용한 출력1 : 
+  printf("name : %s\n", (*pMan).name);
+  printf("phone : %s\n", (*pMan).phone);
+  
+  // 구조체 포인터를 이용한 출력2 : ->
+  printf("name : %s\n", pMan->name);
+  printf("phone : %s\n", pMan->phone);
+  return 0;
+}
+```
+
+```c
+// struct_example.c
+// FILE
+#include <stdio.h>
+
+struct perInfo {
+  char addr[30];
+  char tel[20];
+};
+
+struct person {
+  char name[20];
+  char pID[20];
+  struct perInfo* info;
+};
+
+int main()
+{
+  struct perInfo info = {"Korea Seoul", "333-4444");
+  struct person man = {"Mr.Lee", "820204-xxxx512");
+  
+  man
+}
+```
+
+* ppt 보고 정리하기
+
+* 구조체의 byte 수 : 모른다. 그 안에 있는 멤머 종류와 바이트 수에 따라 다르게 설정된다.
+  * ex)
+  ```c
+  struct person {
+    char name[20];
+    char pID[20];
+    struct person* fmd;
+  };   // 20 + 20 + 4 = 44 따라서 44byte이다.
+  ```
+* char : 1 / int : 4 / double : 8 / pointer : 4
