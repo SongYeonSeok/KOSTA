@@ -33,3 +33,37 @@
 * 이 방식은, stack의 깊이가 길어질수록 stack의 사용량이 누적되는 것인데, 컴파일러가 많이 만들어진 stack를 꽉 채워가서 stack overflow라는 에러 메세지가 발생할 가능성이 높아진다. 
 * 이 stack overflow가 발생하면, logic 분석으로 해석이 안되고 시스템적인 분석으로 들어가야 한다.
 
+* 잘 구현된 프로그램은 처리되어야 할 데이터의 부류가 적절히 나뉘어진다.
+* 부류를 적절히 나누면 데이터를 처리하는 과정이 수월해진다.
+
+* 중첩된 구조체 : 구조체의 멤버로 구조체 변수가 오는 경우
+* ![image](https://user-images.githubusercontent.com/49339278/129133914-e9f4a927-d4e5-4bae-bb5a-15ef4f7a6f9f.png)
+
+* 중첩된 구조체 변수의 초기화 방식
+  * case 1
+  * ![image](https://user-images.githubusercontent.com/49339278/129134055-9051d8e1-cf98-4fb1-876d-6df805cd9807.png)
+  * 두 방법 어느 것을 써도 상관은 없는데, case 2를 사용하여 그룹별로 지정하는 것이 신상에 좋다. 따라서 case 2 방법을 사용하는 것을 권장한다.
+
+  * case 2
+  * ![image](https://user-images.githubusercontent.com/49339278/129134072-ea46038a-3d57-48f9-9a55-8563dbe30079.png)
+  * 마찬가지로 case 2를 사용하는 것을 권장한다.
+
+* 위의 예제와 같이, 계속 struct, struct ... 를 작성해야 하니 번거롭다. 그래서 나온 것이 typedef 키워드가 나왔다. (물론, typedef이 struct때문에 나온 것은 아니다.)
+
+* typedef 키워드의 이해
+```typedef int INT;```
+  * typedef : 이름을 지어 주자 -> To : complier -> 해석하고 읽기가 편해지는 점이 있다.
+  * int : 기본 자료형 int에 대해
+  * INT; : INT라는 이름을~~ 끝.
+
+  * typedef가 많이 쓰이는 곳 : struct
+  * 가독성을 높이기 위해서 사용
+
+* typedef의 적용
+* ![image](https://user-images.githubusercontent.com/49339278/129135012-a47eec0d-445f-4bb0-ba3e-f791b0b36a8f.png)
+* 후자를 많이 쓴다. 단, 구조체에 자료 정의를 다른 사람이 만든 헤더 파일에 들어가 있다면, 전자를 많이 쓴다.
+
+* 구조체 이름의 생략
+* ![image](https://user-images.githubusercontent.com/49339278/129135339-65e72939-b2ff-4f21-9499-7adbc2935f79.png)
+* 두 가지가 다 허용이 된다. 하지만 서로 같지 않다. 전자는 구조체를 선언할 때, 구조체 자체에 data라는 이름을 부여했는데, 후자는 구조체 자체에 이름을 부여하지 않았다.
+* 전자와 후자는 Data로 써도 무방. but 전자는 'struct Data ...' 라고 뜨면서 이렇게 써도 된다는 것이다. 즉, 두 가지 명칭을 쓸 수 있다는 것. 후자는 명칭이 없어서 한 가지의 명칭(아래의 Data)만 쓸 수 있다.
