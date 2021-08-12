@@ -6,6 +6,8 @@
 
 * commit : 저장하는 것??
 
+* 앞으로, visual studio 2019에서 작업한 것을 github로 연동시키는 것으로 하자.
+
 
 
 
