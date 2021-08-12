@@ -1,0 +1,4 @@
+﻿  keyboard.cpp
+C:\Users\KOSTA\source\repos\CTest\keyboard\keyboard.cpp(26,9): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\CTest\keyboard\keyboard.cpp(78,5): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  keyboard.vcxproj -> C:\Users\KOSTA\source\repos\CTest\Debug\keyboard.exe

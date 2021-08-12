@@ -1,7 +1,6 @@
 ﻿#include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
-
 int main()
 {// ctrl + c (무한루프 빠져나갈 때
     char name[20];  // 문자열 변수 지정할 때, Array값을 가지고 얼마나 넣을지 미리 데이터 공간 지정하기

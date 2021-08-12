@@ -1,0 +1,15 @@
+﻿  sortingScore.cpp
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(72,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(72,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 3의 형식이 'int *'입니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(81,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(81,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 3의 형식이 'int *'입니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(91,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(125,15): error C2440: '초기화 중': 'const char *'에서 'char'(으)로 변환할 수 없습니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(125,12): message : 이 변환이 가능한 컨텍스트가 없습니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(127,10): error C2440: '=': 'char'에서 'const char *'(으)로 변환할 수 없습니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(127,6): message : 정수 계열 형식에서 포인터 형식으로 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(159,30): error C2664: 'void swapPo(const char *,const char *)': 인수 1을(를) 'const char'에서 'const char *'(으)로 변환할 수 없습니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(159,12): message : 정수 계열 형식에서 포인터 형식으로 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(123,6): message : 'swapPo' 선언을 참조하십시오.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(183,61): warning C4477: 'printf' : 서식 문자열 '%7c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'const char *'입니다.
+C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(191,61): warning C4477: 'printf' : 서식 문자열 '%7c'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'const char *'입니다.

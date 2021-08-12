@@ -1,0 +1,12 @@
+﻿  gugudan.cpp
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(105,7): error C2065: 'dan': 선언되지 않은 식별자입니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(105,16): error C2065: 'dan': 선언되지 않은 식별자입니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(105,23): error C2065: 'nDan': 선언되지 않은 식별자입니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(105,29): error C2065: 'dan': 선언되지 않은 식별자입니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(107,28): error C2065: 'nDan': 선언되지 않은 식별자입니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(111,33): error C2065: 'dan': 선언되지 않은 식별자입니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(111,48): error C2065: 'dan': 선언되지 않은 식별자입니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(111,12): warning C4473: 'printf': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(111,12): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 3개 필요하지만 1개가 제공되었습니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(111,12): message : 누락된 variadic 인수 2이(가) 서식 문자열 '%2d'에 필요합니다.
+C:\Users\KOSTA\source\repos\CTest\gugudan\gugudan.cpp(128,2): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
