@@ -100,6 +100,17 @@ void sort(int* a, int n)		// swap 과정이 필요
 	}
 }
 
+struct student {
+	int kor;
+	int eng;
+	char name[10];
+};
+
+
+// 20210812 미션
+// 위의 구조체를 이용하여 사용자 정의 자료형을 선언하고,
+// 10명의 학생에 대한 데이터를 입력한 후 정렬하여 출력하시오.
+
 // 전역변수 : 이하의 함수에서 사용 가능
 const int nArr = 10;
 int kor[] = { 67, 70, 77, 65, 68, 72, 79, 55, 85, 61 };
@@ -286,7 +297,7 @@ void VoidPrint(void* p, int i)		// void pointer의 casting
 	if (i == 2)	printf("%d\n", *(int*)p);		// int
 	if (i == 3)	printf("%f\n", *(double*)p);	// double
 	if (i == 4) printf("%f\n", *(float*)p);		// float
-	if (i == 5) printf("%s\n", *(char*)p);		// string
+	if (i == 5) printf("%s\n", *(char**)p);		// string
 
 }
 

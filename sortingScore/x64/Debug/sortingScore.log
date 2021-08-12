@@ -1,11 +1,9 @@
 ﻿  sortingScore.cpp
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(91,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(167,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(216,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(242,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(242,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(289,21): warning C4477: 'printf' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int'입니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(289,21): warning C4313: 'printf': 서식 문자열의 '%s'이(가) 인수 1('int' 형식)과(와) 충돌합니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(316,8): warning C4101: 'vp2' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\CTest\sortingScore\sortingScore.cpp(315,8): warning C4101: 'vp1' :참조되지 않은 지역 변수입니다.
-  sortingScore.vcxproj -> C:\Users\KOSTA\source\repos\CTest\x64\Debug\sortingScore.exe
+C:\Users\KOSTA\source\repos\KOSTA\sortingScore\sortingScore.cpp(91,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\sortingScore\sortingScore.cpp(178,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\sortingScore\sortingScore.cpp(227,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\sortingScore\sortingScore.cpp(253,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\sortingScore\sortingScore.cpp(253,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\sortingScore\sortingScore.cpp(327,8): warning C4101: 'vp2' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\sortingScore\sortingScore.cpp(326,8): warning C4101: 'vp1' :참조되지 않은 지역 변수입니다.
+  sortingScore.vcxproj -> C:\Users\KOSTA\source\repos\KOSTA\x64\Debug\sortingScore.exe
