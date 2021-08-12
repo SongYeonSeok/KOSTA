@@ -1,10 +1,12 @@
 # KOSTA
 
 * KOSTA 강의노트
-  1. C언어 강의 정리      : 1day ~ 
+  1. C언어 강의 정리      : 1day ~ 8day
   2. C++언어 강의 정리    : 
 
-* commit : 저장하는 것??
+* commit을 해야 노트던지 뭐든지 저장이 되는 것이다.
+
+* 앞으로, visual studio 2019에서 작업한 것을 github로 연동시키는 것으로 하자.
 
 
 

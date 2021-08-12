@@ -712,9 +712,14 @@ void pswap(int **p1, int **p2)
 * ![image](https://user-images.githubusercontent.com/49339278/128973535-cf07c1f5-52a1-49f4-ad78-e5bf431d5141.png)
 
 # 6. 구조체(Struct*ure*)와 사용자 정의 자료형
+* struct : 여러개의 data type 변수들을 Group으로 관리
+* 배열 : 동일한 data type 변수들을 관리
+
 * 구조체의 정의 : 하나 이상의 기본 자료형을 기반으로 사용자 정의 자료형을 만들 수 있는 문법 요소
+
+
 ```c
-struct point  // point(점)라는 이름의 구조체 선언, struct : 키워드
+struct point  // point(점)라는 이름의 구조체 자료형 선언(정의), struct : 키워드
 {
   int x;   // 구조체 멤버 int x
   int y;   // 구조체 멤버 int y
