@@ -12,20 +12,18 @@
   * while문에 의한 반복
   	- while문의 기본 원리와 의미
   	    - 반복 조건이 거짓일 때 반복문을 빠져나갈 수 있다.
-  	    <pre>
-		<code>
-		while(반복 조건)    // 반복 조건 : 조건식이 들어감. 반복 조건이 참(true, 1, !0)일 때 반복문 구간 실행
-		{                   // 다른 언어에서는 'true'만 인정한다(이렇게 생각해두기). 
-							// 그래서 C언어가 다른 언어에 비해 유연한 면이 있다.
+  	    ```c
+	    while(반복 조건)    // 반복 조건 : 조건식이 들어감. 
+	    			// 반복 조건이 참(true, 1, !0)일 때 반복문 구간 실행
+	    {                   // 다른 언어에서는 'true'만 인정한다(이렇게 생각해두기). 
+				// 그래서 C언어가 다른 언어에 비해 유연한 면이 있다.
 	        반복 내용
             // "반복의 조건"이 만족되는 동안
             // "반복 내용"을 반복 실행하라.
-		}
-		</code>
-		</pre>
+	    }
+	    ```
         
-        <pre>
-        <code>
+	```c
         // example.c
         while(i<10)
         {
@@ -35,14 +33,12 @@
             // i<10이 만족되는 동안
             // printf()와 i++를 반복 실행하라.
         }
-        </code>
-        </pre>
+        ```
     
     - while문의 중괄호
         - 반복하고자 하는 영역이 둘 이상의 문장으로 구성되는 경우에 필수
         - 단일 문장일 경우, 생략은 가능하다. 단, 시각적으로 불편하지 않는다는 경우에 한해서이다.
-        <pre>
-        <code>
+        ```c
         while (i < 10)
         {
             printf("Hello World!\n"),i++;       // 콤마(,) ≒ 세미콜론(;) but, 문장의 끝은 아니다.
@@ -50,26 +46,22 @@
                                                 // 중괄호가 생략이 될 수 있었던 것 (컴파일러가 속아 넘어간 것)
                                                 // 사용하면 욕먹는다. (절대 권장하지 않음)
         }    
-        </code>
-        </pre>
+        ```
     
     - 무한 루프(반복)
         - 반복의 조건으로 true가 오면 발생
-        <pre>
-        <code>
+        ```c
         while(1)    // 반복의 조건 대신 0이 아닌 정수를 넣는다.
         {
             printf("Hello World!\n");              
             i++;
         }
-        </code>
-        </pre>
+        ```
         - 무한루프의 예시
             - 의도하지 않게 무한루프가 발생할 수도 있다. 조심해야 한다.
             - 만약 의도하고 사용했다면 좋은 것이고, 그렇지 않을 때 벗어나려면, ctrl + C 사용!
             
-        <pre>
-        <code>
+        ```c
         // example2.c
         #include <stdio.h>
         #include <conio.h>
@@ -100,11 +92,9 @@
             return 0;
             
         }
-        </code>
-        </pre>
+        ```
         
-        <pre>
-        <code>
+        ```c
         // example3.c
         #include <stdio.h>
         #include <conio.h>
@@ -135,8 +125,7 @@
             getch();
             return 0;
         }    
-        </code>
-        </pre>
+        ```
         
     - 무한 루프에 빠지지 않으려면? 다음을 확인해야 한다.
         1. **index 지정**
@@ -144,8 +133,7 @@
         3. **증감**
         - 이러한 것들을 묶어 놓은 것이 for문이다.
 
-        <pre>
-        <code>
+        ```c
         // 성공적인 예시
         #include <stdio.h>
         #include <conio.h>
@@ -178,15 +166,13 @@
 
         }
 
-        </code>
-        </pre>
+        ```
         
     - while문의 중첩
         - while문 안에 while문을 포함시킨다는 뜻
         - 반복 구조 내에서 또 하나의 반복 구조 형성
         
-        <pre>
-        <code>
+        ```c
         #include <stdio.h>
         
         int main()
@@ -206,8 +192,7 @@
             }
         }
         
-        </code>
-        </pre>
+        ```
         
     - while문의 순서도
         - ![image](https://user-images.githubusercontent.com/49339278/128297813-b0278045-aad4-4376-9b3c-b2862acc900a.png)
@@ -233,8 +218,7 @@
             - for문: 선 실행, 후 비교(B형 or O형 인간)
 
     - while문 처럼 인덱스, 수행조건, 증감을 일일이 지정할 필요 없이 반복 조건에 한 곳에 지정 가능하다.
-    <pre>
-    <code>
+    ```c
     #include <stdio.h>
     #include <conio.h>
 
@@ -263,11 +247,9 @@
         return 0;
 
     }
-    </code>
-    </pre>
+    ```
     
-    <pre>
-    <code>
+    ```c
     // 2단 - 1
     #include <stdio.h>
     #include <conio.h>
@@ -290,11 +272,9 @@
         getch();        // 오류가 발생할 경우, 프로젝트 -> 속성 -> C/C++ -> sdl속성 아니오 지정
         return 0;
     }
-    </code>
-    </pre>
- 
-    <pre>
-    <code>
+    ```
+    
+    ```c
     
     // 2단 - 2
     #include <stdio.h>
@@ -326,11 +306,9 @@
         getch();
         return 0;
     }
-    </code>
-    </pre>
+    ```
     
-    <pre>
-    <code>
+    ```c
     // 2단 - 3 (for문 중첩)
     #include <stdio.h>
     #include <conio.h>
@@ -353,8 +331,7 @@
         getch();
         return 0;
     }
-    </code>
-    </pre>
+    ```
     
     * 프로그래밍할 때 중요한 것
         - ** 중복되는 것을 최소화! **
@@ -364,8 +341,7 @@
             * 이유 2 : 코딩 시에 유연성 증가
             * 따라서 가급적 상수를 많이 사용하지 않도록 하자.
         
-    <pre>
-    <code>
+    ```c
     // 2단 4열 구구단
     #include <stdio.h>
     #include <conio.h>
@@ -395,11 +371,9 @@
         getch();
         return 0;
     }
-    </code>
-    </pre>
+    ```
     
-    <pre>
-    <code>
+    ```c
     // 3단 3열 구구단
     #include <stdio.h>
     #include <conio.h>
@@ -425,11 +399,9 @@
         getch();
         return 0;
     }
-    </code>
-    </pre>
+    ```
     
-    <pre>
-    <code>
+    ```c
     // 구구단.c
     #include <stdio.h>
     #include <conio.h>
@@ -448,8 +420,7 @@
         getch();
         return 0;
     }
-    </code>
-    </pre>
+    ```
     
     * 반복 과정의 이해
         - ![image](https://user-images.githubusercontent.com/49339278/128298182-505318c3-2699-429e-8cd1-7c3a9d4e98df.png)
@@ -469,20 +440,17 @@
 * if문에 의한 조건적 실행
     - 조건이 만족되는 경우에 한해서 실행
     - for문과 다르게, 실행의 조건에 따라 1번만 수행된다.
-    <pre>
-    <code>
+    ```c
     if (실행의 조건)
     {
         실행하고자 하는 내용 // '실행의 조건'이 만족되는 경우 '실행하고자 하는 내용'을 실행한다.
                              // 만족되지 않으면 건너뛴다.
     }
-    </code>
-    </pre>
+    ```
 
 * if ~ else에 대해서
     - 단점, 불필요한 연산을 하게 된다.
-    <pre>
-    <code>
+    ```c
     if (조건 )    // "조건"이 만족되는 경우 "이거" 실행, 만족되지 않으면 "저거" 실행
     {
         조건 만족 시 실행 ; "이거"
@@ -491,8 +459,7 @@
     {
         조건 불만족 시 실행 ; "저거"
     }
-    </code>
-    </pre>
+    ```
     
 * if, else if, else
     - 무분별하게 사용하면 lost(불필요한 지연과 연산)이 많다. 꼭 필요한 경우가 아니면 사용하지 말자.
@@ -548,8 +515,7 @@
         - 만일 숫자 키 외의 키를 누르면 프로그램을 종료하세요.
         - 0을 누르면 프로그램을 종료하세요.
         - ![image](https://user-images.githubusercontent.com/49339278/128302998-982e4e24-e855-44a2-99a1-9b049fa00b93.png)
-        <pre>
-        <code>
+        ```c
         #include <stdio.h>
         #include <conio.h>
         
@@ -576,8 +542,7 @@
             /* if-else문에서 들여쓰기는 시각적 목적으로 사용하는데, 들여쓰기 하지 않더라도 구조만
                간단하다면 들여쓰기 하지 않아도 된다.*/
         }
-        </code>
-        </pre>
+        ```
         
         * 참고 (scanf, scanf_s의 차이점)
             - 비쥬얼 스튜디오를 사용하게 되면 SDL로 인해 scanf()사용할 때 오류가 발생한다.
@@ -591,38 +556,38 @@
             3. 정수 숫자 입력받을 
         
     2. 1번 문제는 switch ~ case 문을 이용해서 작성하여라.
-        <pre>
-        <code>
-        #include <stdio.h>
-	#include <conio.h>
+        	
+		```c
+		
+       	 #include <stdio.h>
+		#include <conio.h>
 	
-	int main()
-	{
-		int num;	// 입력받을 숫자
-		
-		printf("숫자를 입력하세요: ");
-		scanf("%d", &num);
-		// scanf_s("%d", &num);		// scanf 안될 때 사용한다.
-		
-		switch(num)
+		int main()
 		{
-		case 1 : printf(">1 : One\n");		break;
-		case 2 : printf(">2 : Two\n");		break;
-		case 3 : printf(">3 : Three\n");	break;
-		case 4 : printf(">4 : Four\n");		break;
-		case 5 : printf(">5 : Five\n");		break;
-		case 6 : printf(">6 : Six\n");		break;
-		case 7 : printf(">7 : Seven\n");	break;
-		case 8 : printf(">8 : Eight\n");	break;
-		case 9 : printf(">9 : Nine\n");		break;
-		default : break;
-		}
+			int num;	// 입력받을 숫자
+		
+			printf("숫자를 입력하세요: ");
+			scanf("%d", &num);
+			// scanf_s("%d", &num);		// scanf 안될 때 사용한다.
+		
+			switch(num)
+			{
+			case 1 : printf(">1 : One\n");		break;
+			case 2 : printf(">2 : Two\n");		break;
+			case 3 : printf(">3 : Three\n");	break;
+			case 4 : printf(">4 : Four\n");		break;
+			case 5 : printf(">5 : Five\n");		break;
+			case 6 : printf(">6 : Six\n");		break;
+			case 7 : printf(">7 : Seven\n");	break;
+			case 8 : printf(">8 : Eight\n");	break;
+			case 9 : printf(">9 : Nine\n");		break;
+			default : break;
+			}
 		
 		getch();
 		return 0;
 		
-	}
-        </code>
-        </pre>
+		}
+        	```
         
         
