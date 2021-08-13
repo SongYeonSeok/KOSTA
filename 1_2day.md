@@ -35,8 +35,7 @@ https://heropy.blog/2017/09/30/markdown
 * 디버깅(Debugging) : 에러를 버그라고 부른다. 이 버그를 제거하는 과정을 의미한다. 프로그래밍에서 디버깅이 약 60%를 차지하기 때문에, 프로그래밍을 디버깅하는 과정이라고 말할 수 있다.
 
 * 프로그래밍 편집
-<pre>
-<code> 
+```c
 #include <stdio.h>
 
 int main(void)
@@ -47,8 +46,7 @@ int main(void)
 
 // 실행 결과
 Hello, world!
-</code>
-</pre>
+```
 
 * 설명
   - 변수 카테고리 (= data type): int, void
@@ -91,8 +89,7 @@ Hello, world!
   - // 1개 줄, /* 여러 줄 */
 
   - 주의할 점 : 주석을 나타내는 기호는 중복될 수 없다. 단, 단일 행 주석은 중복 가능하다.
-  <pre>
-  <code>
+  ```c
   /* 주석의 시작, 여러 행에 걸쳐서
             /* 단일 행 주석 처리 */
   */
@@ -100,8 +97,7 @@ Hello, world!
   /* 주석의 시작, 여러 행에 걸쳐서
         // 단일 행 주석 처리
   */
-  </code>
-  <pre>
+  ```
   
 * 시작하기
 새 프로젝트 만들기 -> 템플릿에서 C++ 언어 선택 -> OS에서 windows 선택 -> 콘솔 앱 선택
@@ -120,8 +116,7 @@ Hello, world!
   - OPP 패러다임(사고의 전환) : Object Oriented Programming (객체지향 프로그래밍) -> class 개념이 OOP에서 나옴
   - 폰 노이만 방식 : 위에서 아래로 내려오는 순차적인 처리를 하는 방식으로, class 개념이 본격적으로 도입되면서, 폰 노이만 방식와 다르게 OOP 패러다임으로 사고의 전환이 필요해졌다.
   
-<pre>
-<code>
+```c
 // 첫 C 프로그램
 #include <stdio.h>
 
@@ -129,11 +124,9 @@ int main(void)
 {
     printf("안녕하세요. 반갑습니다.");
 }
-</code>
-</pre>
+```
 
-<pre>
-<code>
+```c
 
 // 잘못된 예
 #include <stdio.h>
@@ -148,13 +141,11 @@ main()
   C언어에서 생략한다면, 기본 int형이므로 사용이 가능하지만,
   C++로 넘어가면서 이러한 문법 요소가 엄격하게 적용됩니다. 따라서 무조건 형식 지정자를 붙여주여야 합니다.
 */
-</code>
-</pre>
+```
 
 - 명령어를 입력할 때, 빨간 줄이 나온다면? 문법상 오류(Syntax Error)가 나타났음을 알려주는데, 빨간 줄이 없이 프로그램을 구성했다면 성공적으로 완료된 것입니다.
 
-<pre>
-<code>
+```c
 // 예제 3
 #include <stdio.h>
 #include <conio.h>
@@ -169,8 +160,7 @@ int main()
 /* getch 함수 실행에 오류가 발생하면?
    프로젝트 -> Hello 속성 페이지 -> C/C++ 항목 클릭 -> SDL 검사, 아니오 선택 -> 적용하고 확인
 */
-</code>
-</pre>
+```
 
 * 프로그램의 입출력
   * 입력
@@ -185,8 +175,7 @@ int main()
     - 콘솔에서의 출력은 화면으로 출력하는 것이라고 생각하면 된다. 따라서 파일은 입력도 되고 출력도 된다.
     - ex) printf 함수
     
-<pre>
-<code>
+```c
 // 예제 4
 #include <stdio.h>
 #include <conio.h>
@@ -209,11 +198,9 @@ int main()
 저는 7살이에요.
 
 */
-</code>
-</pre>
+```
 
-<pre>
-<code>
+```c
 // 예제 5
 #include <stdio.h>
 #include <conio.h>
@@ -262,8 +249,7 @@ int main()
 }
 
 
-</code>
-</pre>
+```
 
 * printf 함수 이야기
   * printf는 문자열을 출력하는 함수
@@ -326,8 +312,7 @@ int main()
   - 소수 6자리를 넘는 실수 입력 시 %e 사용
   - 단, double형 변수를 사용하는 경우에는 서식 문자 %le를 사용
  
-<pre>
-<code>
+```c
 // 예제 6
 #include <stdio.h>
 #include <conio.h>
@@ -353,11 +338,9 @@ int main()
 반갑습니다.
 
 */
-</code>
-</pre>
+```
 
-<pre>
-<code>
+```c
 // 예제 7-1 (방법 1)
 #include <stdio.h>
 #include <conio.h>
@@ -385,11 +368,9 @@ int main()
     getch();
     return 0;
 }
-</code>
-</pre>
+```
 
-<code>
-<pre>
+```c
 // 예제 7-2 (방법 2)
 #include <stdio.h>
 #include <conio.h>
@@ -423,8 +404,7 @@ int main()
 제 키는 170cm이에요
 제 키는 1.7 m이에요
 */
-</pre>
-</code>
+```
 
 * 데이터 공간 
   - 변수 지정할 때, 자료형에 따라 메모리 공간을 확보해 둔다.
@@ -440,8 +420,7 @@ int main()
   
   * 'a' : 1 byte, "abc" : 3 byte
   
-<code>
-<pre>
+```c
 // 예제 7-3 (방법 3)
 #include <stdio.h>
 #include <conio.h>
@@ -472,5 +451,4 @@ int main()
 // 배달 음식이라고 생각하면, 우리가 배달 음식을 만들어서 주면, 그 음식이 주문한 사람한테 가는 것처럼,
 // 값을 입력해서 그 값을 지정한 변수에 저장시키는 것이라고 생각하면 될 것 같다.
 }
-</pre>
-</code>
+```

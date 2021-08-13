@@ -13,6 +13,7 @@
   * 컴퓨터의 주소 체계에 따라 크기가 결정
     * 증감은 자료형 data 오차범위 ex) int형 -> -4 ~ +4
   * **32비트 시스템 기반 : 4바이트**
+    * 메모리 관리 위해
     * 즉, 포인터 = 4byte
   * ![image](https://user-images.githubusercontent.com/49339278/128833006-cc35322c-18ce-420f-818f-98ca443fed5f.png)
 
@@ -97,7 +98,7 @@ int main(void)
 
 int main(void)
 {
-  int* pA = 100;  // 100이 어디에 있음? (정확한 값을 입력해야 한다.
+  int* pA = 100;  // 100이 어디에 있음? (검증되고 제공된 주소를 대입)
   *pA = 10;
   return 0;
 }
@@ -210,8 +211,8 @@ int main(void)
     printf("%d \n", *(++pArr));
     printf("%d \n", *(++pArr));
     
-    printf("%d \n", *(pArr+1));
-    printf("%d \n", *(pArr+2));
+    printf("%d \n", *(pArr+1));   // arr[1] 중요!!!!
+    printf("%d \n", *(pArr+2));   // arr[2] // arr[i] = *(arr+i)
     
     return 0;
   }
