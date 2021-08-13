@@ -1,7 +1,8 @@
 ﻿  NewStructPrintScore.cpp
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(70,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(98,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(91,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(91,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(91,6): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(66,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(93,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(86,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(86,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(86,6): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(121,12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   NewStructPrintScore.vcxproj -> C:\Users\KOSTA\source\repos\KOSTA\x64\Debug\NewStructPrintScore.exe
