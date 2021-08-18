@@ -396,6 +396,7 @@ int function(int pArr[])
 
 * Call-By-Value와 Call-By-Reference
   * call-by-reference : 참조(참조를 가능케 하는 주소 값)을 인자로 전달하는 형태의 함수 호출
+  * 포인터를 활용할 때 사용한다.
   * ![image](https://user-images.githubusercontent.com/49339278/128950268-93509cca-d478-45b3-9942-c2ec1f0bf6ec.png)
     * call-by-reference에 의한 swap
     ```c
