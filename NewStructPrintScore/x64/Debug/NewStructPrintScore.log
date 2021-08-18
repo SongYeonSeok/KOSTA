@@ -1,8 +1,12 @@
 ﻿  NewStructPrintScore.cpp
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(66,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(93,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(86,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(86,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(86,6): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
-C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(121,12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(87,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(141,14): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(142,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(143,29): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(144,29): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(145,29): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(139,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(138,9): warning C4101: 'tot' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(139,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\KOSTA\source\repos\KOSTA\NewStructPrintScore\NewStructPrintScore.cpp(138,20): warning C4101: 'avg' :참조되지 않은 지역 변수입니다.
   NewStructPrintScore.vcxproj -> C:\Users\KOSTA\source\repos\KOSTA\x64\Debug\NewStructPrintScore.exe

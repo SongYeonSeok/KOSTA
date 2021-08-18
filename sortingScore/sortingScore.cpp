@@ -245,7 +245,7 @@ void sortEx2(double* a, int n)
 
 
 
-void sortTest()
+void sortTest()  // 배열을 이용한 성적 처리
 {
 		
 	//int arr[] = { 67, 70, 77, 65, 68, 72, 79, 55, 85, 61 };
