@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Functest",
-    "\\Hello",
+    "\\Array",
     "\\WhatTimeIsIT"
   ],
-  "SelectedNode": "\\Functest\\Functest.cpp",
+  "SelectedNode": "\\CTest.sln",
   "PreviewInSolutionExplorer": false
 }
