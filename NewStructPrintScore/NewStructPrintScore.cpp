@@ -248,28 +248,154 @@ void StreamTest()
 	else printf("입력 파일이 존재하지 않습니다.\n");
 }
 
+#define KBD_BUF_SIZE 20
+#define MAX(x,y) (x>y)? x:y
+#define MIN(x,y) (x<y)? x:y
+
+int GetInt()
+{
+	// 호출이 되면 무조건 키보드에서 값을 입력받아서 int형으로 반환하는 것
+	char buf[KBD_BUF_SIZE];
+	fgets(buf, KBD_BUF_SIZE, stdin);    // stdin : Keyboard until [Enter]
+	return(atoi(buf));
+}
+
+double GetDouble()
+{
+	char buf[KBD_BUF_SIZE];
+	fgets(buf, KBD_BUF_SIZE, stdin); 
+	return(atof(buf));
+}
+
+void StringParse()   // 문자열을 입력받아서 int, double, 문자열 입력을 수행 (scanf을 사용하지 않고)
+{
+	while (1)
+	{
+		int k;
+		char b[5];   // buffer
+		printf("\n\n\n ====문자열 변환 테스트 + @ ===\n"
+			"	1.정수(int)\n"
+			"	2.실수(double)\n"
+			"	3.문자열(공백포함)\n"
+			"	4.매크로 함수 테스트\n"
+			"	0.Exit\n"
+			"======================\n"
+			"	Select Menu : ");
+		//scanf("%d", &k);  // 최종 kbd buffer의 [Enter] 키 처리 필요
+		/* scanf함수에 입력값을 넣을 때, 입력 값에 항상 enter가 들어감 근데 enter가 남아 있음*/
+		//fflush(stdin);  // fflush를 사용해서 입력 키값을 키보드 버퍼를 지워라고 명령을 함. 그런데 잘 안됨
+						// 그래서 fflust가 enter를 지우는 역할을 함
+						// 원래 fflust는 출력 버퍼용이다. 그래서 어떤 시스템에서는 작동될 수도 있고 아닐 수도 있다.
+						// 정확하게 하기 위해서는 fgets 함수에 대해 루프를 돌려주어야 한다.
+
+		// scanf 대신에 fgets를 사용하기를 권장한다.
+		fgets(b, 5, stdin);  // 입력 처리
+
+		// 이상하게 두 개가 출력되는 이유 : scanf의 \n 개행문자 때문
+
+		if (*b == '1')  // (k==1), (b[0] == 0x31), (b[0] == '1')
+		{
+			// 먼저 정수를 문자열로 입력받음
+			char buf[KBD_BUF_SIZE];
+			printf("정수를 입력하세요 : ");  // prompt message
+			// scanf("%s", KB_BUT{SIZE);  // 기본적인 문자열 입력
+			//fgets(buf, KBD_BUF_SIZE, stdin);  // 별로 추천되지 않는다. 특수 파일 입출력을 쓸 것임 ; fgets
+			//									// enter 키가 눌릴때까지 받아주는 함수이다.
+			//									// 
+			//int n = atoi(buf);
+			printf("변환된 정수값은 %d 입니다.\n\n", GetInt());// stdon : 키보드입력(key board)
+		}
+		if (*b == '2')	// else를 붙이지 않는 이유는, k==1을 수행하고 나서, 다시 else if (k==2)를 체크하게 됨
+					// 그런데 k값이 그대로 바뀌지 않고 유지가 되는데, 이 시점에서 k==2이냐를 비교했을 때,
+					// 위의 k == 1값을 그대로 내려와서 k==2문을 쓰지 않고 else로 넘어감
+
+					// 만약 else를 붙이게 된다면, k==1인 경우에 대해 수행한 후, 빠져 나온 다음에 else문을
+					// 만나게 되는데, 그러면 당연히 넘어가게 된다. 따라서 else을 붙이는 여부는 실행하냐 아니냐
+					// 이다. 모두를 거쳐서 가기위해서는 else문을 쓰면 안된다.
+		{
+			char buf[KBD_BUF_SIZE];
+			printf("실수를 입력하세요 : ");  // prompt message
+			// scanf("%s", KB_BUT{SIZE);  // 기본적인 문자열 입력
+			//fgets(buf, KBD_BUF_SIZE, stdin);  // 별로 추천되지 않는다. 특수 파일 입출력을 쓸 것임 ; fgets
+			//double n = atof(buf);
+			printf("변환된 실수값은 %f 입니다.\n\n", GetDouble());// stdon : 키보드입력(key board)
+		}
+		if (*b == '3')
+		{
+			char buf[KBD_BUF_SIZE];
+			printf("문자열을 입력하세요 : ");  // prompt message
+			// scanf("%s", KB_BUT{SIZE);  // 기본적인 문자열 입력
+			fgets(buf, KBD_BUF_SIZE, stdin);  // 별로 추천되지 않는다. 특수 파일 입출력을 쓸 것임 ; fgets
+			printf("변환된 문자열은 %s 입니다.\n\n", buf);// stdon : 키보드입력(key board)
+		}
+		if (*b == '4')
+		{
+			int x, y;
+			float x1, y1;
+			printf("두 개의 정수를 입력하세요 : ");  // prompt message
+			//scanf("%d %d", &x, &y);  // GetInt 함수 생성하기
+			x = GetInt();	y = GetInt();
+			printf("두 개의 정수 %d와 %d 중 큰 수는 %d입니다.\n\n\n", x, y, MAX(x,y));
+			printf("두 개의 실수를 입력하세요 : ");  // prompt message
+			//scanf("%f %f", &x1, &y1);  // GetDouble 함수 생성하기
+			x1 = GetDouble();	y1 = GetDouble();
+			printf("두 개의 실수 %f와 %f 중 큰 수는 %f입니다.\n", x1, y1, MAX(x1, y1));
+		}
+
+		if (*b == '0') break;
+	}
+}
+
+
 int main()
 {
 	int k;
-	printf(
+	printf("\n\n\n =========================\n"
 		"	1.sortTest();\n"
 		"	2.StreamTest();\n"
 		"	3.sortTestEx();\n"
-		"	0. Exit\n\n"
+		"	4.StringParse();\n"  // 문자열 변환 테스트
+		"	0.Exit\n\n"
 		"======================"
 		"	Select Menu : ");
 
-	scanf("%d", &k);
+	//scanf("%d", &k);
+	k = GetInt();   // scanf의 큰 단점인 \n이 남는 것이 사라짐!
+	// 단, fgets는 LF문자가 만날 때까지 받는 함수임. 즉, 한 줄 단위로 읽어들인다는 것으로, 공백 등 기타 여러 문자가
+	// 들어갈 수도 잇다. 개행 문자가 나올 때까지 한 줄씩 읽어드리는 특징 가짐
+	// enter값이 나와야만 값을 보내준다. 
 
-	switch (k)
+	while (1)
 	{
 		// sortTest();    // 1
 		// StreamTest();  // 2
 		// sortTestEx();  // 3
-	case 1:	sortTest();		break;
-	case 2: StreamTest();	break;
-	case 3:	sortTestEx();	break;
-	case 4: case 5: case 6: case 7: case 8: case 9:
-	default:	break;
+		// SortingParse();// 4
+		if (k == 1) 
+		{
+			sortTest();
+			break;
+		}
+		else if (k == 2) 
+		{ 
+			StreamTest();
+			break; 
+		}
+		else if (k == 3) 
+		{
+			sortTestEx();
+			break; 
+		}
+		else if (k == 4) 
+		{
+			StringParse();
+			break; 
+		}
+		else
+		{
+			break;
+		}	
+
 	}
+
 }

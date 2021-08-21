@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaxOfThreeInt", "MaxOfThree
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MiddlePoint", "MiddlePoint\MiddlePoint.vcxproj", "{F57B0BD3-767C-4C21-8099-78D7015EAB57}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bubblesort", "bubblesort\bubblesort.vcxproj", "{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{F57B0BD3-767C-4C21-8099-78D7015EAB57}.Release|x64.Build.0 = Release|x64
 		{F57B0BD3-767C-4C21-8099-78D7015EAB57}.Release|x86.ActiveCfg = Release|Win32
 		{F57B0BD3-767C-4C21-8099-78D7015EAB57}.Release|x86.Build.0 = Release|Win32
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Debug|x64.ActiveCfg = Debug|x64
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Debug|x64.Build.0 = Debug|x64
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Debug|x86.ActiveCfg = Debug|Win32
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Debug|x86.Build.0 = Debug|Win32
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Release|x64.ActiveCfg = Release|x64
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Release|x64.Build.0 = Release|x64
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Release|x86.ActiveCfg = Release|Win32
+		{BC7C31B0-6D55-42FE-8A72-372CAD2FB31B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
