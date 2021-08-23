@@ -160,6 +160,7 @@ int MyFuncTwo(it num1 = 5, int num2= 7)
 
 ## chapter 1-5 namespace에 대한 소개
 * 잘 안쓰는 것이 좋다는 썰이 있다.
+* 큰 규모의 project 모듈
 * namespace의 기본 원리 : 프로그램 모듈화를 위해서 도입을 한 부분이라고 이해하면 좋다.
   * 일반적인 경우 : 프로젝트 명이라고 생각하면 된다.
 
