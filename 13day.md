@@ -119,6 +119,7 @@ void SwapByRef(int* ptr1, int* ptr2)
 * 잘못된 참조의 반환
 * ![image](https://user-images.githubusercontent.com/49339278/130397432-9fccfea9-6c6c-406e-b40d-646e8d72fe23.png)
 * reference는 변수의 별명, 여러 개의 별명을 붙일 수도 있다.
+* int num = 20; : stack에 쌓임 -> 일시적 -> 소멸됨
 
 * const reference의 또 다른 특징
 * ![image](https://user-images.githubusercontent.com/49339278/130397575-658f9a6d-426a-43df-a42e-e9683ccba53a.png)
@@ -134,7 +135,9 @@ void SwapByRef(int* ptr1, int* ptr2)
 * delete는 매모리 공간을 해제하는 방법이다. free를 대신하는 방법이다.
 * new 연산자로 할당된 메모리 공간은 반드시 delete 함수 호출을 통해서 소멸해야 한다!
 * 이후에 공부하는 객체의 생성 및 소멸 과정에서 호출하게 되는 new & delete 연산자의 연산자 연산특성은 malloc & free와 큰 차이가 있다.
-* 개념적으로 비슷하다는 것이지, 구조상으로는 다른 것들이다.
+* 개념적으로 비슷하다는 것이지, 구조상으로는 다른 것들이다. (malloc는 힙 영역에 생김)
+
+* malloc도 사용 가능하다. 고전적인 방법들은 모두 사용이 가능하다. 하지만 new를 통해서 새롭게 변수 뿐만 아니라 배열 등 다양한 형태의 변수 타입들을 생성을 해줄 수 가 있다
 
 * 포인터를 사용하지 않고 힙에 접근하기
 * ![image](https://user-images.githubusercontent.com/49339278/130400232-6825820e-7080-467a-9533-5d5b2d359288.png)
