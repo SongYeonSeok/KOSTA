@@ -1,0 +1,18 @@
+﻿  CppProject.cpp
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(65,40): warning C4477: 'fscanf' : 서식 문자열 '%7d'에 'int *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int'입니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(66,40): warning C4477: 'fscanf' : 서식 문자열 '%7d'에 'int *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int'입니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(67,40): warning C4477: 'fscanf' : 서식 문자열 '%7d'에 'int *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int'입니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(74,27): error C2664: 'int fputs(const char *,FILE *)': 인수 1을(를) 'FILE *'에서 'const char *'(으)로 변환할 수 없습니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(74,8): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdio.h(233,26): message : 'fputs' 선언을 참조하십시오.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(75,113): error C2660: 'fputs': 함수는 8개의 인수를 사용하지 않습니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdio.h(233,26): message : 'fputs' 선언을 참조하십시오.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(79,3): error C2660: 'fputs': 함수는 8개의 인수를 사용하지 않습니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdio.h(233,26): message : 'fputs' 선언을 참조하십시오.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(85,10): warning C4477: 'printf' : 서식 문자열 '%-7s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'int'입니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(53,14): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(54,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(64,28): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(65,28): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(66,28): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\CppProject\CppProject.cpp(67,28): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
