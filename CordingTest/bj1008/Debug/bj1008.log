@@ -1,3 +1,0 @@
-﻿  bj1008.cpp
-C:\Users\KOSTA\source\repos\C_coding_test\bj1008\bj1008.cpp(9,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  bj1008.vcxproj -> C:\Users\KOSTA\source\repos\C_coding_test\Debug\bj1008.exe
