@@ -1,8 +1,15 @@
 ﻿  StudentTest.cpp
-C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(84,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(103,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(119,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\KOSTA\source\repos\KOSTA\CppTest\StudentTest\StudentTest.cpp(38,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\KOSTA\source\repos\KOSTA\CppTest\StudentTest\StudentTest.cpp(43,7): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\KOSTA\source\repos\KOSTA\CppTest\StudentTest\StudentTest.cpp(52,38): warning C4390: ';': 제어된 빈 문이 있습니다. 이 문이 필요합니까?
-  StudentTest.vcxproj -> C:\Users\KOSTA\source\repos\KOSTA\CppTest\Debug\StudentTest.exe
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(68,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(85,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(104,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(120,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(155,82): error C2664: 'Person::Person(int,char *,int)': 인수 2을(를) 'const _Elem *'에서 'char *'(으)로 변환할 수 없습니다.
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(155,97): message : 변환하면서 한정자가 손실됩니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(65,2): message : 'Person::Person' 선언을 참조하십시오.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\StudentTest\StudentTest.cpp(49,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\StudentTest\StudentTest.cpp(55,7): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\StudentTest\StudentTest.cpp(68,38): warning C4390: ';': 제어된 빈 문이 있습니다. 이 문이 필요합니까?

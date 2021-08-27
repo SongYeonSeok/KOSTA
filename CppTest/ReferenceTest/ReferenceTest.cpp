@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <cstdio>
 #include <cmath>
-#include "C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h"
+
+//#include "MyHeader.h"
 
 // 위의 MyHeader.h는 절대 경로가 필요하다.
 
@@ -26,8 +27,9 @@ public:			// 멤버 변수 지정, 멤버 변수의 초기화, 생성자 작성
 	//	//this->x = x; this->y = y;	// Point 클래스의 x와 y임을 표시하기 위해!
 	//}								// 이렇게 생성자를 만들어도 된다.
 
-	Point(int x = 0, int y = 0) : x(x)
+	Point(int x = 0, int y = 0)
 	{
+		this->x = x;
 		this->y = y;
 	}
 
@@ -42,6 +44,23 @@ public:			// 멤버 변수 지정, 멤버 변수의 초기화, 생성자 작성
 	};							// 생성자(클래스를 만든다면 무조건 해야 함!) */
 	double distance(Point p);
 
+	Point operator+(Point p)	// 새로운 point!
+	{
+		int xx = this->x + p.x;
+		int yy = this->y + p.y;
+		return Point(xx, yy);		// 여기서 계산된 새로운 point가 생성되면서 
+	}
+
+	Point operator*(int n)	// 매개변수 : 피연산자 
+	{
+		return Point(this->x * n, this->y * n);
+	}
+
+	Point operator+=(Point p)
+	{
+		x += p.x, y += p.y;
+		return *this;	// self return
+	}
 };
 
 // 2d -> 3d? => 상속 사용
@@ -62,8 +81,9 @@ public:
 };
 
 // 함수의 프로토타입(원형) 선언 (헤더 파일로 지정함)
-void swapRef(int& a, int& b);
-void swapRef(int* a, int* b);
+//void swapValue(int a, int b);
+//void swapRef(int& a, int& b);
+//void swapRef(int* p1, int* p2);  // 포인터 사용
 
 int main(void)
 {
@@ -89,18 +109,29 @@ int main(void)
 
 	Point p1;		// 컴파일러가 혼동해서 오류 일으킴 // p(0,0)  struct -> typedef -> 사용
 	Point p2(10, 20);
-	Point* p3 = new Point(20, 30);  // p3라는 Point의 주소	// 동적 할당 (+초기화 실시)
+	Point* ppp3 = new Point(20, 30);  // p3라는 Point의 주소	// 동적 할당 (+초기화 실시)
 
-	printf("Point class 변수의 동적 할당 : p3(%d, %d)\n\n", p3->GetX(), p3->GetY());
+	printf("Point class 변수의 동적 할당 : p3(%d, %d)\n\n", ppp3->GetX(), ppp3->GetY());
 
 	printf("두 점 p1(%d, %d)과 p2(%d, %d)의 거리는 %f 입니다.\n", 
 		p1.GetX(), p1.GetY(), p2.GetX(), p2.GetY(), p1.distance(p2));
 	printf("두 점 p1(%d, %d)과 p2(%d, %d)의 거리는 %f 입니다.\n",
 		p1.GetX(), p1.GetY(), p2.GetX(), p2.GetY(), p2.distance(p1));  // 같은 결과 나온다.
 
+	Point p33 = p1 + p2;
+	printf("두 점 p1(%d, %d)과 p2(%d, %d)의 합은 p33(%d, %d)입니다.\n",
+		p1.GetX(), p1.GetY(), p2.GetX(), p2.GetY(), p33.GetX(), p33.GetY()); 
 
+	Point& p3 = *ppp3;	// reference 기법 기억해두기!
 
-	Point3D pp1;
+	Point p4 = p2 +p3;		// a = b + c; ??? c = (a+=b) + d => c = a+b+d?
+	Point p5 = p2 * 3;
+	printf("두 점 p2(%d, %d)과 p3(%d, %d)의 합은 p4(%d, %d)입니다.\n",
+		p2.GetX(), p2.GetY(), (*ppp3).GetX(), ppp3->GetY(), p4.GetX(), p4.GetY());
+	printf("두 점 p2(%d, %d)과 n = 3의 곱은 p5(%d, %d)입니다.\n",
+		p2.GetX(), p2.GetY(), p5.GetX(), p5.GetY());
+
+	/*Point3D pp1;
 	Point3D pp2(10, 20, 30);
 	Point3D* pp3 = new Point3D(40, 50, 60);
 	printf("Point3D class 변수의 동적 할당 : p3(%d, %d, %d)\n\n", pp3->GetX(), pp3->GetY(), pp3->GetZ());
@@ -108,30 +139,30 @@ int main(void)
 	printf("두 점 p3(%d, %d, %d)과 p2(%d, %d, %d)의 거리는 %f 입니다.\n",
 		pp3->GetX(), pp3->GetY(), pp3->GetZ(), pp2.GetX(), pp2.GetY(), pp2.GetZ(), pp3->distance(pp2));  // pp3->distance(pp2) == pp2.distance(*pp3)
 	printf("두 점 p3(%d, %d, %d)과 p2(%d, %d, %d)의 XY 평면거리는 %f 입니다.\n",
-		pp3->GetX(), pp3->GetY(), pp3->GetZ(), pp2.GetX(), pp2.GetY(), pp2.GetZ(), pp2.distance(Point(pp3->GetX(), pp3->GetY())));
+		pp3->GetX(), pp3->GetY(), pp3->GetZ(), pp2.GetX(), pp2.GetY(), pp2.GetZ(), pp2.distance(Point(pp3->GetX(), pp3->GetY())));*/
 
 }
 
-void swapValue(int a, int b)
-{
-	int c = a;
-	a = b; 
-	b = c;
-}
-
-void swapRef(int &a, int &b)  // 포인터를 사용하지 않음
-{
-	int c = a;
-	a = b;
-	b = c;
-}
-
-void swapRef(int *p1, int *p2)  // 포인터 사용
-{
-	int c = *p1;  // * == [], *a = *(a+0) = a[0]
-	*p1 = *p2;
-	*p2 = c;
-}
+//void swapValue(int a, int b)
+//{
+//	int c = a;
+//	a = b; 
+//	b = c;
+//}
+//
+//void swapRef(int &a, int &b)  // 포인터를 사용하지 않음
+//{
+//	int c = a;
+//	a = b;
+//	b = c;
+//}
+//
+//void swapRef(int *p1, int *p2)  // 포인터 사용
+//{
+//	int c = *p1;  // * == [], *a = *(a+0) = a[0]
+//	*p1 = *p2;
+//	*p2 = c;
+//}
 
 double Point::distance(Point p)	// Point p와의 거리
 {	// x과 y의 거리 : ((x2 - x1)^2 + (y2 - y1)^2)^(1/2) -> 유클리드 거리라고 말한다.

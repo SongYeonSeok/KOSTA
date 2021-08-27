@@ -1,5 +1,4 @@
 #include <iostream>
-#define _CRT_SECURE_NO_WARNINGS
 
 // strcpy를 할 때, c 헤더파일인 string.h을 작성하는 게 좋지만, 이왕이면 C++을 하니까 iostream을 하는 게 좋을 것!
 void swapValue(int a, int b);  // 함수의 원형(prototype) 선언
@@ -29,8 +28,12 @@ public:
 	void SetX(int x) { this->x = x; }
 	void SetY(int y) { this->y = y; }
 
-	double distance(Point p);
+	double distance(Point p);	// Point p와의 거리
 
+	Point operator+(Point p)	// 새로운 point!
+	{
+		return Point(this->x + p.x, this->y + p.y);		// 여기서 계산된 새로운 point가 생성되면서 
+	}
 };
 
 // 2d -> 3d? => 상속 사용
@@ -54,9 +57,10 @@ class Person		// 정적
 {
 private:
 	int Number;	// 고유 번호(index number), unsigned int : 양수 int -> 범위 넓어짐
-	char Name[20];				// 이름 : 한글 10자까지 담을 수 있도록!
+	char Name[100];				// 이름 : 한글 10자까지 담을 수 있도록!
 							// 문자열을 담을 그릇은? => malloc or new를 이용해서 동적으로 할당 필요
 	int Age;
+	std::string nam;
 
 public:
 	// Person(int num) : Number(num), Age(0) {}	// initializer (초기화, 최소 num은 있어주어야 함)
@@ -64,7 +68,7 @@ public:
 	Person(int num, char* str=0, int a=0) : Number(num), Age(a)
 	{
 		//strcpy(Name, str); // 오류 발생 시 strcpy_s 사용하기
-		str_cpy(Name, str);	// strcpy_s는 size를 지정해야 한다. 
+		strcpy(Name, str);	// strcpy_s는 size를 지정해야 한다. 
 
 		//strcpy(Name, str);	// val = num (-> num 값이 val로 넘겨가는 것이 대입 연산자의 특징이다.) 왼쪽 : 종속변수, 오른쪽 : 입력변수
 		// Name에 값을 넣기 위해서.... malloc, new를 이용해서 동적으로 할당이 필요하다.
@@ -81,7 +85,7 @@ public:
 	void SetAge(int a) { Age = a; }
 	void SetName(char* str)  // 기존 방을 비우고(delete) 새 방을 잡자. 
 	{
-		strcpy(Name, str);
+		str_cpy(Name, str);
 	}
 };
 
@@ -132,7 +136,7 @@ private:
 	void calc()
 	{
 		Tot = Kor + Eng;
-		Avg = Tot / 2;
+		Avg = (double)Tot / 2.0;
 	}
 
 public:
@@ -144,7 +148,21 @@ public:
 		calc();			// 데이터 무결성을 보증하는 프로그램의 예시이다. (고급의 과정)
 	}		// 생성자
 
-	int kor() { return Kor; }
+	/*Student(int num, int kor, int eng, const char* str = NULL, int age = 0) : Person(num, str, age)  // initializer  
+	{
+		this->Kor = kor;
+		this->Eng = eng;
+		calc();
+	} */
+
+	/*Student(int num, int kor, int eng, std::string str = NULL, int age = 0) : Person(num, str.c_str(), age)	// Person에 string, char*, const char* 설정
+	{
+		this->Kor = kor;
+		this->Eng = eng;
+		calc();
+	}*/
+
+	int kor() { return Kor; }  // private 변수들을 수정 가능하도록 함
 	int eng() { return Eng; }
 	int tot() { return Tot; }
 	double avg() { return Avg; }
