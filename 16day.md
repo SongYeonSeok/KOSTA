@@ -65,4 +65,23 @@
   * ![image](https://user-images.githubusercontent.com/49339278/131093353-761ef920-e8d2-496a-b697-6859eecdfdd0.png)
 
 * 오버로딩이 불가능한 연산자의 종류
-  * 
+  * ![image](https://user-images.githubusercontent.com/49339278/131099912-3491429c-fedf-445e-a9af-7b8c26f19d3d.png)
+  * 앞의 4개(네모) : member access와 관련된 연산자 -> 오버로딩이 불가능한 연산자이다.
+  * 이외의 sizeof, typeid, 등 텍스트(키워드)로 되어 있는 연산자들은 오버로딩이 불가능하다.
+  * ```=, ( ), [ ] , ->```는 오버로딩을 할 수는 있다. 단, 하지 않는 것이 좋다. 
+
+* 연산자를 오버로딩을 하는 데 있어서의 주의사항
+  * ![image](https://user-images.githubusercontent.com/49339278/131100178-8974b9f9-c468-4e7f-9511-a3cd3afd0da5.png)
+  * **본래의 의도를 벗어난 형태의 연산자의 오버로딩은 좋지 않다!** -> 프로그램을 혼란스럽게 만들 수 있다.
+  * **연산자의 우선순위와 결합성은 바뀌지 않는다.** -> 따라서 이 둘을 고려해서 연산자를 오버로딩해야 한다.
+  * **매개변수의 디폴트 값 설정이 불가능하다.** <- 매개변수의 자료형에 따라서 호출되는 함수가 결정되므로
+  * **연산자의 순수기능까지 빼앗을 수는 없다.**
+  ```c++
+  int operator*(const int num1, const int num2)
+  {
+    return num1*num2;  // 정의 불가능한 형태의 함수
+  }
+  ```
+
+* 주말 : C/C++ 빡세게 공부! (C : 배열부터 빡세게 공부!) (C++ : All -> 삼성 expert SW academy 공부)
+* 파이썬 정리!
