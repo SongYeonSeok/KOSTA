@@ -2,10 +2,12 @@
 
 * KOSTA 강의노트
   1. C언어 강의 정리      : 1day ~ 11day
-  2. C++언어 강의 정리    : 12day ~ 
-  3. 
+  2. C++언어 강의 정리    : 12day ~ 17일부day
+  3. MFC                  : 17일부day ~
+    * MFC = Microsoft Foundation Class
+  4. C#
 
-* 코테를 C++ / Python으로 준비하기
+* 코테를 C/C++ / Python으로 준비하기
 * C 복습하자 (현재 배열 전까지 완료)
 
 * commit을 해야 노트던지 뭐든지 저장이 되는 것이다.
