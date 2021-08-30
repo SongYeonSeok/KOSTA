@@ -2,8 +2,8 @@
 
 * KOSTA 강의노트
   1. C언어 강의 정리      : 1day ~ 11day
-  2. C++언어 강의 정리    : 12day ~ 16day
-  3. MFC                  : 17day ~
+  2. C++언어 강의 정리    : 12day ~ 17일부day
+  3. MFC                  : 17일부day ~
     * MFC = Microsoft Foundation Class
   4. C#
 
