@@ -5,7 +5,51 @@ void swapValue(int a, int b);  // 함수의 원형(prototype) 선언
 void swapRef(int& a, int& b); 
 void swapRef(int* p1, int* p2);
 void str_cpy(char* dest, char* src);
+/*define MAX(X, Y) ((X)>(Y)) ? (X) : (Y)
+#define MIN(X, Y) ((X)<(Y))? (X):(Y)
+#define ABS(X)	  ((x)<0)?(-x):(x)*/
 
+template <typename T>
+T Add(T num1, T num2)
+{
+	return num1 + num2;
+}
+
+template <typename T>
+T MAX(T num1, T num2)
+{
+	if (num1 > num2) return num1;
+	else return num2;
+}
+
+template <typename T>
+T MIN(T num1, T num2)
+{
+	if (num1 < num2) return num1;
+	else return num2;
+}
+
+template <typename T>
+T ABS(T num)
+{
+	if (num < 0) return -num;
+}
+
+
+
+// 만약에 위에 #define을 사용한다면 다음의 함수는 필요하지 않다. 
+/*int MIN(int X, int Y)
+{
+	if (X > Y) return Y;
+	else return X;
+}
+
+double MIN(double X, double Y)
+{
+	if (X > Y) return Y;
+	else return X;
+}  // 오버로드 방식
+*/
 
 
 

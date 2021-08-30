@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <cstdio>
-#include <cmath>
+#include "MyHeader.h"
 
 //#include "MyHeader.h"
 
@@ -85,6 +85,34 @@ public:
 //void swapRef(int& a, int& b);
 //void swapRef(int* p1, int* p2);  // 포인터 사용
 
+
+template <typename T>
+T Add(T num1, T num2)
+{
+	return num1 + num2;
+}
+
+template <typename T>
+T MAX(T num1, T num2)
+{
+	if (num1 > num2) return num1;
+	else return num2;
+}
+
+template <typename T>
+T MIN(T num1, T num2)
+{
+	if (num1 < num2) return num1;
+	else return num2;
+}
+
+template <typename T>
+T ABS(T num)
+{
+	if (num < 0) return -num;
+}
+
+
 int main(void)
 {
 	//std::cout << "Hello C plus plus World!\n\n"; 
@@ -110,6 +138,16 @@ int main(void)
 	Point p1;		// 컴파일러가 혼동해서 오류 일으킴 // p(0,0)  struct -> typedef -> 사용
 	Point p2(10, 20);
 	Point* ppp3 = new Point(20, 30);  // p3라는 Point의 주소	// 동적 할당 (+초기화 실시)
+
+
+	int a = MAX<int>(20, 30);
+	double d = MAX<double>(1., 2.0);
+	int b = ABS<int>(-5);		// 앞에 data type을 붙이는 것이 정.석.(표준이자 권장사항)
+
+	std::string s1 = "abcd", s2 = "----efgh";
+
+	std::cout << a << "\n" << d << "\n" << b << std::endl << std::endl;
+	std::cout << Add(1, 2) << "\n";
 
 	printf("Point class 변수의 동적 할당 : p3(%d, %d)\n\n", ppp3->GetX(), ppp3->GetY());
 

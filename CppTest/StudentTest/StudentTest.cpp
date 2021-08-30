@@ -26,8 +26,13 @@ int main(void)
 	std::string fname;  // string은 std::string을 사용하면 된다. 만약 귀찮으면 맨 앞에 using namespace std; 작성
 	//st = "문자열";
 
-	std::string nm = "춘향이";
-	fname = "C:\\Users\\KOSTA\\source\\repos\\KOSTA\\CppTest\\student2.txt";	// 이것도 가능
+	std::string nm = "춘향이";			
+	fname = "C:\\Users\\KOSTA\\source\\repos\\KOSTA\\CppTest\\student2.txt";	// 이것도 가능		// 스트링 변수에 대한 대입문
+
+	std::string strAdded = fname + nm;	//string에서 find, c_str, length, replace;
+	std::cout << strAdded << std::endl << std::endl;
+
+
 
 	Student st(0, 80, 76, nm, 15);
 	ShowClass(st);

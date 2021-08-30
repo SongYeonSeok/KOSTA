@@ -1,2 +1,10 @@
-﻿  ReferenceTest.cpp
-  ReferenceTest.vcxproj -> C:\Users\KOSTA\source\repos\KOSTA\CppTest\Debug\ReferenceTest.exe
+﻿  MyLibrary.cpp
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(115,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(151,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\MyHeader.h(167,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  ReferenceTest.cpp
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\ReferenceTest\ReferenceTest.cpp(118,10): error C3861: 'MAX': 식별자를 찾을 수 없습니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\ReferenceTest\ReferenceTest.cpp(119,13): error C3861: 'MAX': 식별자를 찾을 수 없습니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\ReferenceTest\ReferenceTest.cpp(120,10): error C3861: 'ABS': 식별자를 찾을 수 없습니다.
+C:\Users\KOSTA\source\repos\KOSTA\CppTest\ReferenceTest\ReferenceTest.cpp(122,15): error C3861: 'Add': 식별자를 찾을 수 없습니다.
+  코드를 생성하고 있습니다...
