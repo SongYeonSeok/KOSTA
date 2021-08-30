@@ -6,7 +6,7 @@
   * SDK = Software Development Kit -> 라이브러리라는 뜻(고급형 그래픽 인터페이스에 같이 적용되는 경우가 있음)
   * ![image](https://user-images.githubusercontent.com/49339278/131077944-dfe4b19e-6022-4ddf-8f2f-3637a2147d5b.png)
 
-## Chapter 08-2. 가상함수(Virtual Function)
+## Chapter 08-2. 가상함수(Virtual Function) -> 상속 전용 함수(default)
 * ![image](https://user-images.githubusercontent.com/49339278/131078469-918d104d-0989-4bf6-bc12-6636786a7ef6.png)
 
 * 기초 클래스의 포인터로 객체를 참조하면...
@@ -50,6 +50,16 @@
 * 참조자의 참조 가능성(할 수는 있지만 안하는 것이 좋다.)
 * ![image](https://user-images.githubusercontent.com/49339278/131083795-d9d95299-a746-423d-a19d-050ec51f8a6b.png)
 
+## Chapter 09-1
+
+## Chapter 09-2 다중상속에 대한 이해 (안하는 것이 좋다. - 쓸 일이 별로 없다.)
+* 다중상속에 대한 이해
+* 다중상속의 기본 방법
+  * ![image](https://user-images.githubusercontent.com/49339278/131280062-eaf7ee26-f4cb-4116-abad-d195b2342f98.png)
+
+* Virtual 가상함수 
+
+
 
 ## Chapter 11-1. 연산자의 오버로딩
 * 흔히 생각하는 +, -, ```*```, /의 오버로딩을 말한다. 즉, 수식을 새롭게 정의해 주는 것이다.
@@ -85,3 +95,5 @@
 
 * 주말 : C/C++ 빡세게 공부! (C : 배열부터 빡세게 공부!) (C++ : All -> 삼성 expert SW academy 공부)
 * 파이썬 정리!
+
+* 좋은 프로그램 = 단순 하고, 알기 쉬우며, 보기 쉬운 프로그램
