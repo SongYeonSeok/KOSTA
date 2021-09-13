@@ -1,0 +1,86 @@
+## MFC(Microsoft Foundation Class)
+
+* MFC = 클라이언트 영역 + 스크롤바 + 대화상자 + 시스템 메뉴 + 툴바 + 메뉴 + 상태 표시줄 + 최초/최대/닫기 버튼
+  * 클라이언트 영역이 중요
+  * MFC는 건축 분야에 비교할 때, 벽돌과 같다고 할 수 있다.
+    * 무엇이든지 할 수 있지만, 그만큼 다루는 것이 까다롭기 때문이다.
+
+* MFC 프레임워크에 대한 이해가 필요하다. 
+  * 기본 제공 클래스라고 생각하면 된다. 즉, 자동 생성된다는 것
+  * 프로젝트를 구성하는 주요 클래스는 4개로 구성된다.
+    
+    | 프로젝트에 생성된 클래스 (주요 4가지) | 부모 클래스 (이것이 MFC) |설명 | 추가 설명 |
+    |:--|:--|:--|:--|
+    |C__App|CWinApp| 프로그램 구동 | 'back'에 해당되는 부분 |
+    |CMainFrame|CFrameWnd| 프레임(틀) 윈도우 처리| 가장 기본적이고 전체적인 프로시저들이 define되어 있음 |
+    |C__Doc|CDocument| 데이터 처리 |단일, 다중 document 클래스를 의미. 주로 여기에 집중을 함 |
+    |C__View|CView| 클라이언트 윈도우 처리| 프로그래머에게 가장 가까운 것(front에 관련된 부분). 주로 여기에 집중을 함 |
+  
+  * underline 부분은 우리가 만든 프로젝트 이름이 들어가는 부분이다.
+
+* 대화 상자 기반 = Dialog를 의미
+* 단일 문서 = SDI를 의미
+* 여러 문서 = MDI를 의미
+
+* 참고 : VS 2019에서 여러 파일을 옮겨 다닐 필요 없이 '피킹' 기능을 사용하면 한개의 창에서 다른 문서(헤더파일 등)를 확인할 수 있다.
+
+* C__App theApp;  // __.h에 전역변수로 선언
+
+* MFC 윈도우 프로그래밍 : MFC 프레임워크에서 생성한 **기반 클래스로부터 상속한 후 변수와 함수를 추가 혹은 재정의하여 사용자 클래스를 작성**하는 것
+* 기반 클래스
+  * ![image](https://user-images.githubusercontent.com/49339278/133008281-a82ff420-1c59-4905-9842-f92875a77002.png)
+  * project
+    * 1. Dialog -> popup 문서 
+    * 2. SDI(Single DI) : 단일문서 -> 대부분의 기능들을 구축해 놓음  ex) 메모장
+    * 3. MDI(Multi DI) : 다중문서     ex) Word, Powerpoint, Excel
+
+### CWinApp (애플리케이션 클래스)
+* CObject -> CCmdTarget -> CWinThread -> CWinApp
+* 일부 클래스를 제외한 모든 클래스는 CObject 클래스로 시작
+* CCmdTarget 클래스에서 WM_COMMAND 메시지 처리 -> CWinApp 클래스에서도 WM_COMMAND 메시지 처리 가능
+  * WM : Window Message의 약자
+* 순차적인 프로그램의 흐름(flow)인데, 고전적인 프로그래밍(legancy) 흐름이라고 할 수 있다.
+
+  * CWinApp 멤버변수
+    ```c++
+      HINSTANCE m_hInstance
+      CWnd*     m_pMainWnd
+    ```
+    
+  * CWinApp 멤버함수
+    ```c++
+      void InitInstance();  // 프로그램 초기화
+      void Run();           // 프로그램 수행 (무한 루프 진행)
+      void ExitInstance();  // 프로그램 종료
+    ```
+    
+  * ![image](https://user-images.githubusercontent.com/49339278/133008543-ee9ee4d4-4365-4866-ba2c-4bb8caae03f6.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/133008662-67d1a42f-5f56-4154-9345-0fb8c584a5de.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/133008668-5bbbc7ed-348e-4022-b6ad-a2cd54d0c562.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/133008675-6ddc6f69-3562-4e70-9a5c-8145c98c9e94.png)
+
+
+### CWnd (윈도우 클래스)
+* CObject -> CCmdTarget -> CWnd
+* CMainFrame 클래스와 CView 클래스의 부모 클래스
+* 윈도우에 대한 클래스 -> 멤버변수로 **HWND** 타입의 변수를 가짐
+
+  * CWnd 멤버변수
+    ```c++
+    HWND    m_hWnd
+    ```
+
+  * CWnd 멤버 함수
+    * 첫 번째 인자로 HWND를 갖는 모든 API 함수
+    * 메시지 핸들러
+
+  * ![image](https://user-images.githubusercontent.com/49339278/133009150-e2b804d3-f69e-4fdd-8e78-6814a21edf40.png)
+    * 이벤트를 처리하는 부분이 가장 중요하다. 이 부분이 Dialog(Form Base)와 SDI를 개발하는 것의 차이점이라고 할 수 있다. 
+  * ![image](https://user-images.githubusercontent.com/49339278/133009165-bd67a625-85cc-4681-a09f-adc92d726184.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/133009194-c5c3f233-5a6c-4721-b602-da20873d1b13.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/133009204-7c91ca07-2b80-4047-bc67-3991bcabf699.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/133009213-8514c7a0-25fa-427a-a54f-31f1c10b2a6c.png)
+  * ![image](https://user-images.githubusercontent.com/49339278/133009225-11aafa48-34d8-4f23-9dfe-49df1c8f4211.png)
+
+### CFrameWnd (프레임 윈도우 클래스)
+* 
