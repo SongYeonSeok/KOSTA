@@ -5,7 +5,7 @@
   2. C++언어 강의 정리    : 12day ~ 17일부day
   3. MFC                  : 17일부day ~ 21day
     * MFC = Microsoft Foundation Class
-  4. Mini Project : 22day ~ 
+  4. Mini Project : 22day ~ 26day (27day : 복습)
   5. C#
 
 * 코테를 C/C++ / Python으로 준비하기
