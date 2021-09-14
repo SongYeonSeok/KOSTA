@@ -256,6 +256,83 @@
   }
   ```
 
+  * C#의 문자열, 문자, 문자배열
+    * 문자열(string) = 문자(character)의 집합체 -> 문자열 안에 있는 각 문자를 엑세스하기 위해 인덱스를 사용할 수 있다.
+    * 문자배열(char array)을 문자열(string)으로 변환하기 위해서는 ```new string(문자 배열)```을 사용한다.
+
+    ```C#
+    using System;
+    
+    namespace MySystem
+    {
+      class Program
+      {
+        static void Main(string[] args)
+        {
+          string s = "C# Studies";
+          
+          // 문자열을 배열 인덱스로 한문자 엑세스
+          for (int i = 0; i < s.Length;i++)
+          {
+            Console.WriteLine("{0}: {1}", i, s[i]);
+          }
+          
+          // 문자열을 문자배열로 변환
+          string str = "Hello";
+          char[] charArray = str.ToCharArray();
+          
+          for (int i = 0;i<charArray.Length;i++)
+          {
+            Console.WriteLine(charArray[i]);
+          }
+          
+          // 문자배열을 문자열로 변환
+          char[] charArray2 = {'A', 'B', 'C', 'D'};
+          s = new string(charArray2);
+          
+          Console.WriteLine(s);
+          
+          // 문자 연산
+          char c1 = 'A';
+          char c2 = (char)(c1 + 3); // ascii 값을 사용하기 때문에 가능한 일
+          Console.WriteLine(c2);    // D 출력
+        }
+      }
+    }
+    ```
+    
+  * C# StringBuilder 클래스
+    * 문자열을 다루는데 중요한 클래스 중 하나. System.Text.StringBuilder 클래스
+    * String 클래스는 Immutable이므로 문자열 갱신을 많이 하는 픞로그램에는 적당하지 않음
+    * 반면 Mutable 타입인 **StringBuilder 클래스**는 문자열 갱신이 많은 곳에서 자주 사용되는데 이는 이 클래스가 별도 메모리를 생성 및 소멸하지 않고 일정한 버퍼를 자고 문자열 갱신을 효율적으로 처리하기 때문
+
+    * 루프 안에서 계속 문자열을 추가 변경하는 코드에선 string 대신 StringBuilder를 사용해야 한다.
+    ```C#
+    using System;
+    using System.Text;
+    
+    namespace MySystem
+    {
+      class Program
+      {
+        static void Main(string[] args)
+        {
+          StringBuilder sb = new StringBuilder();
+          for (int i=1;i<=26;i++)
+          {
+            sb.Append(i.ToString());
+            sb.Append(System.Environment.NewLine);
+          }
+          string s = sb.ToString();
+          
+          Console.WriteLine(s);
+        }
+      }
+    }
+    
+    ```
+    
+    ---------------------
   * Var 키워드 : 초기화할 때 자료형을 자동으로 지정. 선언과 동시에 초기화
     * 비정형 데이터이다. (이유 : 똑같은 var타입인 변수인데, 지정한 숫자 형태에 따라 자료형을 지동으로 지정할 수 있다.)
     * 중요한 것 : 선언과 동시에 초기화, 초기화할 때 자료형을 자동으로 지정한다는 것. -> 잘못하면 오류가 발생할 수도 있다.
