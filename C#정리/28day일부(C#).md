@@ -105,7 +105,7 @@
   
   class Test
   {
-      public string name = "default;
+      public string name = "default";
       public int number = 1000;
   }
   ```
