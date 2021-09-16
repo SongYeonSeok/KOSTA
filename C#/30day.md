@@ -97,3 +97,6 @@
 * Windows Form에서 파일 읽고 저장하기
   * 파일 읽기 : openFileDialog 사용 -> StreamReader 클래스 사용, ReadToEnd(), Close() 사용
   * 파일 저장 : saveFileDialog 사용 -> StreamWriter 클래스 사용, Write(), Close() 사용
+
+* C#에서 경로 지정 -> C#의 Path static class 사용하기
+  * GetToken 메소드 만들어보기
