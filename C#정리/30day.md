@@ -30,6 +30,13 @@
 * foreach : 제약 조건이 여러개가 있어서 많이 사용하는 경우도 있고, 그렇지 않은 경우도 있다.
   * 주로 배열이나 컬렉션에 주로 사용된다. 컬랙션의 각 요소를 하나씩 꺼내와서 foreach 루프 내의 블럭을 실행할 때 사용된다.
   ```C#
+  foreach (데이터타입 변수 in 배열)
+  {
+      ...
+  }
+  ```
+
+  ```C#
   static void Main(string[] args)
   {
       stirng[] array = new string[] { "AB", "CD", "EF" };
