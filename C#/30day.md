@@ -1,6 +1,6 @@
 * C#의 배열선언 != C/C++ 배열 선언
-  * C/C++ : char str[] = "";
-  * C# : char[] str = "";
+  * ```C/C++ : char str[] = "";```
+  * ```C# : char[] str = "";```
   * 느낌상으로는 C#은 포인터 자리에 []이 온 것과 같다고 생각하면 편할 수 있다.
   
 * 문자열에서 n진법으로 변경을 위해선?
@@ -9,8 +9,8 @@
   * C#에서의 변경 과정은 문자열 -> 바이트 -> 숫자 구성 -> n진법 변환
   
 * C#의 문자열 처리 법 2가지 존재
-  1. string str = string.Format("{0} {1}", ○, ●);
-  2. string str = $"출력 형식 지정 {변수 입력}"; -> 마치 python의 f-string과 비슷하다.
+  1. ```string str = string.Format("{0} {1}", ○, ●);```
+  2. ```string str = $"출력 형식 지정 {변수 입력}";``` -> 마치 python의 f-string과 비슷하다.
     * $ 표기법 더 공부해보기
     * https://docs.microsoft.com/ko-kr/dotnet/csharp/tutorials/string-interpolation
     * $ : 보간 문자열 지시자
@@ -94,3 +94,6 @@
         
         ```
     
+* Windows Form에서 파일 읽고 저장하기
+  * 파일 읽기 : openFileDialog 사용 -> StreamReader 클래스 사용, ReadToEnd(), Close() 사용
+  * 파일 저장 : saveFileDialog 사용 -> StreamWriter 클래스 사용, Write(), Close() 사용
