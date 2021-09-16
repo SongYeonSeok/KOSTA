@@ -6,7 +6,7 @@
   3. MFC                  : 17일부day ~ 21day
     * MFC = Microsoft Foundation Class
   4. Mini Project : 22day ~ 26day (27~28day : MFC 추가 학습 및 복습)
-  5. C# : 28일부day
+  5. C# : 28일부day ~ (C# + .NET Windows Form 학습)
 
 * 코테를 C / Python으로 준비하기
 * C 복습하자 (현재 배열 전까지 완료)
