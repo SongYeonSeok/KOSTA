@@ -2,7 +2,6 @@
 
 * Intro
   - Java = C/C++ - Pointer
-  - 대한민국은 Java공화국이다. 대부분의 회사에서 다 Java를 쓰기 때문
   - 인기가 많은 이유 = 무료 + Runtime Library
   - Java는 UNIX 베이스에서 개발된 언어이므로 리눅스 환경에서도 사용 가능하고, 윈도우, 맥 등에서도 사용이 가능하다.
 
@@ -100,6 +99,40 @@
         ```
         
       * Value 타입 : NULL을 가질 수 없는 타입
+
+  * Var 키워드 : 초기화할 때 자료형을 자동으로 지정. 선언과 동시에 초기화
+    * 비정형 데이터이다. (이유 : 똑같은 var타입인 변수인데, 지정한 숫자 형태에 따라 자료형을 지동으로 지정할 수 있다.)
+    * 중요한 것 : 선언과 동시에 초기화, 초기화할 때 자료형을 자동으로 지정한다는 것. -> 잘못하면 오류가 발생할 수도 있다.
+    * 그래서 Var 키워드보다 자료형을 지정하는 것을 추천 (Var : 간편함, 관리하는 데는 불편)
+      * <pre>자료형[] 이름 = {자료, 자료}</pre>
+
+  ```C#
+  Static void Main(string[] args)
+  {
+      var number = 20;
+  }
+  ```
+
+  * 자료형 변환 메서드
+  
+  | 자료형 변환 | 방법 (parsing) |
+  |:--:|:---|
+  | 문자열 -> 숫자 | int.Parse(), double.Parse()|
+  |다른 자료형 -> 문자열 | ToString() |
+  | 문자열 -> 불 | bool.Parse()|
+  
+  ```C#
+  // example.cs
+  int.Parse("123")  // => 숫자 123됨
+  int.Parse("3.14") // => 실수 3.14됨
+  ```
+  
+  * C#의 복합 대입 연산자, 증감 연산자, 삼항 연산자, 조건문, 반복문 -> C, Java와 동일하다.
+    * C#에서 반복문 추가된 것 : for, foreach(배열 처리할 때 유용)
+
+  * 키 입력 메서드 : ReadKey()
+
+
 
   * Nullable Type
      * 정수(int)나 날짜(DataTime)와 같은 *Value Type*은 일반적으로 NULL을 가질 수 없다. 
@@ -332,38 +365,92 @@
     
     ```
     
-    ---------------------
-  * Var 키워드 : 초기화할 때 자료형을 자동으로 지정. 선언과 동시에 초기화
-    * 비정형 데이터이다. (이유 : 똑같은 var타입인 변수인데, 지정한 숫자 형태에 따라 자료형을 지동으로 지정할 수 있다.)
-    * 중요한 것 : 선언과 동시에 초기화, 초기화할 때 자료형을 자동으로 지정한다는 것. -> 잘못하면 오류가 발생할 수도 있다.
-    * 그래서 Var 키워드보다 자료형을 지정하는 것을 추천 (Var : 간편함, 관리하는 데는 불편)
-      * <pre>자료형[] 이름 = {자료, 자료}</pre>
+* C# 열거형 enum
+  * C#의 키워드 enum은 열거형 상수(constant)를 표현하기 위한 것, 이를 **이용하면 상수 숫자들을 보다 의미있는 단어들로 표현**할 수 있어서 프로그램을 읽기 쉽게 해준다.
+  * **enum의 각 요소는 별도의 지정 없이는 첫번째 요소가 0**, 두번째 요소가 1, 세 번째 요소가 2 등과 같이 1씩 증가된 값들을 할당받는다. 물론 개발자가 임의대로 의미있는 번호를 지정해줄 수도 있다.
+  * enum문은 클래스 안이나 네임스페이스 내에서만 선언될 수 있다. 즉, 메서드 안이나 속성 안에서는 선언되지 않는다.
 
+  * 아례 예제에는... Category라는 enum 타입을 정의한 예인데, Cake는 숫자 0을 갖고, IceCream은 1, Bread는 2라는 값을 갖는다. 프로그램상에서 Category 값을 0, 1 처럼 직접 쓰는 대신 Category.Cake, Category.IceCream과 같이 사용하면, 그 의미를 파악하기가 훨씬 쉬워진다.
   ```C#
-  Static void Main(string[] args)
+  public enum Category
   {
-      var number = 20;
+    Cake,
+    IceCream,
+    Bread
   }
   ```
-
-  * 자료형 변환 메서드
   
-  | 자료형 변환 | 방법 (parsing) |
-  |:--:|:---|
-  | 문자열 -> 숫자 | int.Parse(), double.Parse()|
-  |다른 자료형 -> 문자열 | ToString() |
-  | 문자열 -> 불 | bool.Parse()|
+  * C# enum의 사용
+  * **enum 타입은 숫자형 타입과 호환가능하다.** 만약 enum 타입의 변수를 int로 캐스팅하면 해당 enum값의 숫자 값을 얻게 된다. 또한, enum 타입의 변수는 enum 리터럴값과 서로 비교할 수 있다.
+    * Casting : 한 타입을 다른 타입으로 변경하는 것. 타입 변환이 실패할 수도 있다.
   
+  * 아래 코드는 enum 변수 myCity가 리터럴 City.Seoul과 같은지 체크하는 예제이다.
   ```C#
-  // example.cs
-  int.Parse("123")  // => 숫자 123됨
-  int.Parse("3.14") // => 실수 3.14됨
+  class Program
+  {
+      enum City
+      {
+          Seoul,        // 0
+          Daejun,       // 1
+          Busan = 5,    // 5
+          Jeju = 10     // 10
+      }
+      
+      static void Main(string[] args)
+      {
+          City myCity;
+          
+          // enum 타입에 값을 대입하는 방법
+          myCity = City.Seoul;
+          
+          // enum을 int로 변환(Casting)하는 방법
+          // (int)를 앞에 지정
+          int cityValue = (int) myCity;
+          
+          if (myCity == City.Seoul) // enum 값을 비교하는 방법
+          {
+              Console.WriteLine("Welcome to Seoul");
+          }
+      }
+  }
   ```
   
-  * C#의 복합 대입 연산자, 증감 연산자, 삼항 연산자, 조건문, 반복문 -> C, Java와 동일하다.
-    * C#에서 반복문 추가된 것 : for, foreach(배열 처리할 때 유용)
+  * 플래그(flag) enum
+    * enum의 각 멤버들은 각 비트별로 구분되는 값들 (ex : 1, 2, 4, 8, ...)을 갖을 수 있는데, 이렇게 enum 타입이 비트 필드를 갖는다는 것을 표시하기 위해 enum 선언문 바로 위에 [Flags]라는 Attribute (주 : Type 혹은 그 멤버를 선언할 때 그 위에 붙이는 특별한 특성값으로 해당 타입 혹은 멤버가 어떤 특성을 갖고 있는지 나타내게 된다)를 지정할 수 있다.
 
-  * 키 입력 메서드 : ReadKey()
+    * [Flags] 특성을 갖는 플래스 enum은 **OR 연산자를 이용해서 한 enum 변수에 다중값(ex : 1+4)을 가질 수** 있으며, **AND 연산자를 이용하여 enum 변수가 특정 멤버를 포함하고 있는지 체크할 수** 있다.
+
+    * 아래 예제는 Border라는 플래스 enum으로 OR 연산을 통해 다중값을 표현하고, AND 연산을 통해 특정멤버를 체크해보는 코드를 보여주고 있다. 또한, 플래그 enum에 대해 ```.ToString()``` 메서드를 사용하면 해당 플래그 멤버명들을 문자열로 보여준다는 것이다. [Flags]가 없으면 1+4 즉, 5를 출력한다.
+    ```C#
+    [Flags]
+    enum Border
+    {
+        None =0,
+        Top = 1,
+        Right = 2,
+        Bottom = 4,
+        Left = 8
+    }
+    
+    static void Main(string[] args)
+    {
+        // OR 연산자로 다중 플래그 할당
+        Border b = Border.Top | Border.Bottom;
+        
+        // & 연산자로 플래그 체크
+        if ((b & Border.Top) != 0)
+        {
+            // HasFlag() 이용 플래그 체크
+            if (b.HasFlag(Border.Bottom))
+            {
+                // "Top, Bottom" 출력
+                Console.WriteLine(b.ToString());
+            }
+        }
+    }
+    ```
+------------------
+
 
 * 클래스
   * 클래스 - C++의 클래스와 동일
