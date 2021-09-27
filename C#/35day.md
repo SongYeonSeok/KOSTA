@@ -1,1 +1,4 @@
-
+- MDF파일을 이용해서 데이터베이스 프로그램에 Access하는 것이 오늘 수업의 주요 내용
+- 서버 탐색기 -> 데이터 연결 -> 연결 추가
+  - Microsoft Access 데이터베이스 파일 : Local 전용 소형 DB, Excel(office 프로그램의 .mdb파일명)
+  - 
