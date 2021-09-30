@@ -1,0 +1,33 @@
+- 다음주 수요일까지 비대면 수업하고, 그 이후에는 다음주 수요일에 결정한다고 한다.
+- 내일까지 DB, 다음주부터 네트워크 프로그래밍 진행
+  - 10/2 시험 후에 SQL, 네트워크 내용 공부하기
+  - 정처기 실기 준비
+  - C/C++, Java, Python 정리 + 프로그래밍 언어 용어 정리
+  - 통신 -> 하드웨어와 밀접한 관계 가짐(생각보다 어려움)
+  - SQL : MS-SQL, MySQL, Oracle, DB-2, ... (오라클 = 그리디 컴퍼니)
+  - MySQL은 오라클사 소유이지만, 무료로 사용 가능하다. (일부는 유료로 사용) -> 이후 MySQL를 개발했던 개발진이 MarinaDB를 만들었다.(이것도 무료)
+  - Oracle : 오라클, 기업용으로 많이 사용됨
+
+- 주요 SQL 명령어
+  - 일반적인 SQL 명령
+    - Select : data 조회 - 결과값 잇음
+    - Insert : record(row) 추가
+    - Update : data 수정
+  - Create, Alter : 설계(아키텍처) 단계, Db초기
+    - Create : Table 생성
+    - Alter : Table 수정
+  
+- myDBManager
+  - Sql 명령어 창
+    - shift - enter : sql 명령어 실행
+    - selectedText 명령어 실행
+  - Grid View 창
+    - cell update
+    - row insert
+    - new table create
+    - save as .csv
+
+  - SqlDB Class
+  - Grid 명령
+    - Delete Column
+    - Delete Row
