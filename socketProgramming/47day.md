@@ -26,3 +26,22 @@
   - 미니프로젝트 2 성공적으로 완료하기
   - 자연어 처리 관련 내용 정리
   - 
+
+- 통신
+  1. Serial 통신 (제외)
+  2. Ethernet 통신 (기준)
+  - IP : Internet Protocol
+  - IP : IPv4, IPv6
+  - DHCP : Dynamic Host Configuration Protocol - 사설 ip, ip 동적 할당
+  - IP Configuration
+    - DNS Service : 주소 번역 서비스
+
+- C# Windows Socket API
+  - C -> ```#include <Winsock2.h>``` 사용
+  - C ~= C++ <-> C#
+  - Socket는 시작하면 닫아주어야 한다.
+  - Byte Ordering
+    - Big-endian => 쓸 기회가 없다. 인텔 계열의 칩은 모두 Little-endian를 사용한다.
+
+
+- 참고 : TCP/IP 소켓 프로그래밍에서 고급 과정(숙련자)에 해당되는 분은 listen을 사용하지 않는다.
