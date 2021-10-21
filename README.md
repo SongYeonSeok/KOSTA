@@ -22,6 +22,8 @@
   5. SQL 정리
   6. 리눅스 정리
   7. 자료구조 + 알고리즘 정리 (C/C++, Python)
+  8. Computer Science
+  9. Data Science & ML/DL
 * commit을 해야 노트던지 뭐든지 저장이 되는 것이다.
 
 * 앞으로, visual studio 2019에서 작업한 것을 github로 연동시키는 것으로 하자.
