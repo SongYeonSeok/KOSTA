@@ -112,3 +112,5 @@
 
 - gcc -o test test.c : test가 test.c의 컴파일 결과이다.
 - sudo chmod 700 test : rmx-rmx-rmx을 첫번째 rmx만 7이고, 나머지 rmx를 모두 0으로 처리. 즉, user와 owner의 권한을 없앤다.
+
+- gcc -o : 출력 / gcc - c : library
