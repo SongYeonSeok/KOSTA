@@ -9,7 +9,9 @@
   5. C# : 28일부day ~ 34day(C# + .NET Windows Form 학습)
   6. C# + DB(MS-SQL) : 35day ~ 40day(C# 폴더에 저장)
   7. C# Socket Programming + Mini Project 2 : 41day ~ 50day (48day ~ 50day)
-  8. 라즈베리파이 : 51day ~ 
+  8. 라즈베리파이 : 51day, 53day ~ 
+
+- 이벌브소프트 임원면접 응시 : 52day
 
 * 코테를 C++ / Python으로 준비하기
 * C 복습하자 (현재 배열 전까지 완료) (공부 후 C++에 주력)
