@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-// stdlib.h : rand() 함수 포함 헤더파
+// File Name : twozerogame.c
+
+// stdlib.h : rand() 함수 포함 헤더파일
 // time.h : time을 사용하기 위한 헤더파일
 
 
