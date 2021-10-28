@@ -62,4 +62,13 @@
 - 중요한 것! : 실행 파일의 권한과 경로를 주의해야 한다.
   - Path(경로) : System Path / User Path
     - System Path : 유저가 누구든 간에 공통적으로 걸려 있는 Path.
-    - User Path : 
+    - User Path
+
+- 라즈베리파이 포트 번호에서 GPIO에 언어가 입력되어 있다.
+  - ```gpio readall``` : 라즈베리파이 포트 번호 확인할 수 있는 명령어
+
+----------------------
+# PWM : Pulse Midth Modulation (펄스 폭 변조)ㅇ
+- G, Y :좀 흐림
+- RED : 밝음
+- 서서히 증가시키고, 서서히 감소시키는 역할
