@@ -68,7 +68,7 @@
   - ```gpio readall``` : 라즈베리파이 포트 번호 확인할 수 있는 명령어
 
 ----------------------
-# PWM : Pulse Midth Modulation (펄스 폭 변조)ㅇ
+# PWM : Pulse Midth Modulation (펄스 폭 변조)
 - G, Y :좀 흐림
 - RED : 밝음
-- 서서히 증가시키고, 서서히 감소시키는 역할
+- LED 밝기슬 서서히 증가시키고, 서서히 감소시키는 역할
