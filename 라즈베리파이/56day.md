@@ -44,4 +44,22 @@
   - ```#include <wiringPi.h>```
   - Setup 실시 -> 용도 입력(```pinmode(port_num, type)```) -> 
 ------------------------
+- 가급적 GND는 파란선, Vdd는 빨간색으로 표시
+- ```int main(int argc, char **argv)```
+  - argc : 입력 개수, argv : 입력 문자열로, ```**argv == *argv[0]```
+  - ```... $ ledtest 15```를 입력하였을 때, argc = 2, ```*argv[0] = ledtest, *argv[1] = 15```
+  - atoi 함수 (stdlib 헤더 파일에 있다.)
 
+- ```$ find --help``` : find의 기능 설명
+  - find : 파일을 찾아주는 명령어
+
+- ```mv 기존 파일명 새 파일명``` : 파일명 변경 명령어
+
+- LED : R, G, Y -> 다른 것으로 Assign한 후에, 각각 다른 핀에 대해서 조건에 따라 옵션을 주는 프로그램을 작성하라.
+  - 56day.c / 56day_ledtest.c 참고
+
+
+- 중요한 것! : 실행 파일의 권한과 경로를 주의해야 한다.
+  - Path(경로) : System Path / User Path
+    - System Path : 유저가 누구든 간에 공통적으로 걸려 있는 Path.
+    - User Path : 
