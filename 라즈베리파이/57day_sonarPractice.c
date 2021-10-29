@@ -56,7 +56,7 @@ int main(void)
 	// 
 	
 	dist = (double)Td / 2 * sonar * 10;
-	printf("거리는 : %4f m입니다.\n", dist);
+	printf("거리는 : %.4f m입니다.\n", dist);
 	delay(200);
 
 
