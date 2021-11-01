@@ -72,7 +72,7 @@ int main(int n, char *v[])
 		{
 			printf("다시 입력해 주십시오.\n");
 		}
-		
+		delay(1000);
 	}
 	
 	pinMode(pin, OUTPUT);		
@@ -102,7 +102,7 @@ int main(int n, char *v[])
 				// LED 밝기 제어 : PwmWrite
 				int lights = (int)(data * 100 / 255) > 100 ? 100 : (int)(data * 100 / 255);
 				softPwmWrite(pin, lights);
-				printf("현재 밝기는 %d %%입니다.\n", lights);
+				printf("현재 밝기는 %d %%[%d]입니다.\n", lights, data);
 				// printf("[%d]저항값은 %d ohm(%d) 입니다.\n", ch[i], (int)(data * 0.4), data);
 			}
 			if(ch[i] == 3)	printf("[%d]저항값은 %d ohm(%d) 입니다.\n", ch[i], (int)(data * 0.4), data);				// 가변저항 0 ~ 255 [255] 최대 100 ohm
