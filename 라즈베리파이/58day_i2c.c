@@ -100,7 +100,7 @@ int main(int n, char *v[])
 				// Volumn 회로(가변저항)를 조절하여 그 값에 따라 LED의 밝기가 조절되도록 구현
 				// 가변 저항 값 읽기 : wiringPi2CRead
 				// LED 밝기 제어 : PwmWrite
-				int lights = (int)(data * 0.4) > 100 ? 100 : (int)(data * 0.4);
+				int lights = (int)(data * 100 / 255) > 100 ? 100 : (int)(data * 100 / 255);
 				softPwmWrite(pin, lights);
 				printf("현재 밝기는 %d %%입니다.\n", lights);
 				// printf("[%d]저항값은 %d ohm(%d) 입니다.\n", ch[i], (int)(data * 0.4), data);
