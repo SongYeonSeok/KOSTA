@@ -27,12 +27,13 @@
 
 -------------
 # ADC 모듈과 I2C 통신
+- I2C 인터페이스 : IC들 간의 데이터 통신을 목적으로 하는 통신 방식으로, 2개의 신호선(SDA, SCL)만을 사용하여 통신토록 정의한 것이다. 회로가 간단하고, 저비용, 저잡음 등의 장점이 있다. 송/수신측은 하나의 master와 다수의 slave로 구성된다.
 - ADC 3가지 센서
   - ![image](https://user-images.githubusercontent.com/49339278/139608520-600b9be5-1b1d-41d0-8dee-9af608caf331.png)
   - SCL / SDA => Data , I2C 인터페이스의 제어
   - I2C는 라즈베리 파이 포트 번호에서 핀 번호 3번과 5번이 여기에 해당한다.
-    - SDA : wPi 8, GPIO2, 3
-    - SCL : wPi 5, GPIO3, 5
+    - SDA(Serial data) : wPi 8, GPIO2, 3
+    - SCL(Serial clock) : wPi 5, GPIO3, 5
 
   - 특징 : SCL / SDA pin을 이용한 I2C 인터페이스 사용
   - 총 4개의 아날로그 채널이 들어있다. (Ain0 ~ Ain3)
