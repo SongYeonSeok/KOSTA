@@ -28,8 +28,8 @@
 - I2C 활성화 한 후에 I2C 모듈의 주소를 확인한 후에 사용한다.
 
 ---------------------------------------------------------------------
-[C언어로 하는 DHT11 모듈 프로그래밍](https://blog.daum.net/ejleep1/442)
-
+- [C언어로 하는 DHT11 모듈 프로그래밍](https://blog.daum.net/ejleep1/442)
+- [1-wire 인터페이스](http://cms3.koreatech.ac.kr/sites/joo/IFC415/IFC415_09.pdf)
 --------------------------------------------------------------------
 - DHT11 모듈(온습도 센서) : 하이브리드 모듈의 한 종류. (신호 처리를 위한 여러 부품이 들어 있다는 것)
   - type 1 : normal한 상태(원본 그대로) (우리가 가지고 있는 것)
@@ -37,10 +37,14 @@
   - 1-wired
   - 5 개의 byte로 이루어져 있다.
 
-|byte 4 | byte 3|byte2 |byte 1 |byte 0|
+  - 하나의 데이터 버스로 송/수신이 가능한 통신 방식(Single-Wire Two-Way)
+  - 한 차례의 통신 절차는 약 4ms가 소요
+  - 각 데이터는 정수부와 소수점 이하부로 설정
+
+|byte 0 | byte 1 |byte2 |byte 3 |byte 4|
 |:-:|:-:|:-:|:-:|:-:|
 |RH integral | RH decimal | T integral | T decimal | checksum|
-|습도 | 습도 | 온도 | 온도 | |
+|습도 | 습도 | 온도 | 온도 | 0 ~ 3의 합 |
 
 - 구성 요소
   - ![image](https://user-images.githubusercontent.com/49339278/139771500-6402386c-0638-42b7-8eb4-db7b8e44f052.png)
@@ -52,6 +56,7 @@
 - 파장
   - ![image](https://user-images.githubusercontent.com/49339278/139771750-f239d8b8-18e9-4434-ae3e-bc60177fb1ce.png)
   - ![image](https://user-images.githubusercontent.com/49339278/139781197-a1343a80-4cff-4e52-82e1-3ca3c0f233d4.png)
+0. 1-wire 활성화 시켜주어야 한다.
 
 1. send start signal
 ```c
@@ -148,3 +153,6 @@ else                        ERROR;
 |System|SW Programming, Back-End보다 low 수준, H/W의 Interface에 중점|
 |H/W(저수준)|Device를 다루는 수준, S/W 단계가 아니다.|
 ---------------------------------------------------------------------------------
+
+- 내일 : 자이로스코프 센서 실습
+- 자이로스코프 : 자동차, 비행기, 배, 잠수함 등 이동물체에서 많이 사용된다.
