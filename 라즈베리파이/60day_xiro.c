@@ -11,13 +11,22 @@
 #define CONFIG        0x1A
 #define GYRO_CONFIG   0x1B
 #define INT_ENABLE    0x38
+
 #define ACCEL_XOUT_H  0x3B
 #define ACCEL_YOUT_H  0x3D
 #define ACCEL_ZOUT_H  0x3F
+
 #define	TEMPERTURE	  0x41
+
 #define GYRO_XOUT_H   0x43
 #define GYRO_YOUT_H   0x45
 #define GYRO_ZOUT_H   0x47
+
+// LED 
+#define	RED		27
+#define	YELLOW	28
+#define	GREEN	29
+
 
 int fd;
 
@@ -45,6 +54,36 @@ void mpu_init()
 	wiringPiI2CWriteReg8(fd, CONFIG, 0x01);
 	wiringPiI2CWriteReg8(fd, GYRO_CONFIG, 0x24);
 	wiringPiI2CWriteReg8(fd, INT_ENABLE, 0x01);
+}
+
+int lights(double x, double y, double z)
+{
+	pinMode(RED, OUTPUT);
+	pinMode(YELLOW, OUTPUT);
+	pinMode(GREEN, OUTPUT);
+	
+	if(x > 0.0)
+	{
+		digitalWrite(RED, HIGH);
+		delay(1000);
+		digitalWrite(RED, LOW);
+		delay(1000);
+	}
+	if(y > 0.0)
+	{
+		digitalWrite(YELLOW, HIGH);
+		delay(1000);
+		digitalWrite(YELLOW, LOW);
+		delay(1000);
+	}
+	if(z > 0.0)
+	{
+		digitalWrite(GREEN, HIGH);
+		delay(1000);
+		digitalWrite(GREEN, LOW);
+		delay(1000);
+	}
+	return 0;
 }
 
 int main(void)
@@ -79,10 +118,11 @@ int main(void)
 		ax = acl_x / 16384.0;	ay = acl_y / 16384.0;	az = acl_z / 16384.0;
 		gx = gyro_x / 131;		gy = gyro_y / 131;		gz = gyro_z / 131;
 		
-		printf("===================================================\n");
+		printf("\n===================================================\n");
 		printf("가속도 : x = %.3f, y = %.3f, z = %.3f\n", ax, ay, az);
+		lights(ax, ay, az);
 		printf("각속도 : x = %.3f, y = %.3f, z = %.3f\n", gx, gy, gz);
-		printf("온도 : %.3f\n:", 36.53 + ReadReg(TEMPERTURE)/340);
+		printf("온도 : %.3f\n", 36.53 + ReadReg(TEMPERTURE)/340.0);
 
 		delay(1500);
 	}
