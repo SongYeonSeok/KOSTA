@@ -61,8 +61,14 @@ int main(int argc, char *argv[])
 	// 1. 클라이언트(C / linux) ->
 	// 2. 서버(C#) -> utf-8 -> ansi형으로 바꿀 수 있도록 변환해준다.
 	/* ReadProcess() ==> 수정 필요!
-	   ... byte[] aa = Encoding.Convert(Encoding.UTF8, Encoding.Default, bArr);
+	 * 방법 1
+	   ... byte[] aa = Encoding.Convert(Encoding.UTF8, Encoding.Default, bArr, 0, n);	// 뒤에 꼬리가 남는 오류를 해결해줄 수 있다.
 	   AddText(Encoding.Default.GetString(aa, 0, aa.Length), 1);
+	 * 방법 2 (c style)
+	   ... bArr[n] = 0; 
+	   byte[] aa = Encoding.Convert(Encoding.UTF8, Encoding.Default, bArr);	// 뒤에 꼬리가 남는 오류를 해결해줄 수 있다.
+	   AddText(Encoding.Default.GetString(aa, 0, aa.Length), 1);
+
 	   * 
 	   pmnuSendClientText_Click() ==> 수정 필요!
 	   byte[] bArr = Encoding.Default.GetBytes(str);
