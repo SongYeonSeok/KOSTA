@@ -174,8 +174,10 @@
         ```c
         close(sockfd);
         ```
-        
+
 - 라즈베리파이 (linux)
   - ```#include <unistd.h>```
   - ```#include <netinet/in.h>```
   - ```$ ping 라즈베리파이 주소``` : 연결 확인할 때 사용
+  - 리눅스를 포함해서 한글을 사용한다면, 인코딩이 필요하다.
+    - 그래서 UTF-8 -> unix 한글로 인코딩을 시켜주어야 한다. (linux : unix 한글)
