@@ -151,7 +151,26 @@
           ```c
           int write(sockfd, char *buf, int bufsize)
           int read(sockfd, char *buf, int bufsize)
-            // sockfd : 
+            // sockfd : 서버의 경우 accept()에 의해 생성된 소켓 기술자
+            //          클라이언트의 경우 자신의 소켓 기술자
+            // buf    : 송수신할 데이터 버퍼
+            // bufsize: 버퍼의 크기
+            // 리턴값  : 송수신 문자수, 실패시 -1
           ```
+          - UDP 방식에서는 ```sendto()```, ```recvfrom()``` 함수 사용
       - 클라이언트
-        - ```connect()```
+        - ```connect()``` : 클라이언트 측에서 연결 요청
+          - 소켓에 클라이언트의 IP 주소, 포트번호를 자동 할당하고, TCP 방식의 클라이언트가 서버로의 연결을 요청하는 함수
+          - 사전에 연결할 서버의 주소 구조체 초기화가 필요하다.
+          ```c
+          int connect(int sockfd, struct sockaddr *serv_addr, int addrlen);
+              // sockfd     : 클라이언트의 소켓
+              // serv_addr  : 서버의 주소 정보를 담고 있는 구조체
+              // addr_len   : serv_addr 구조체의 길이
+          ```
+      - ```close()``` : TCP방식에서는 미처리된 패킷들을 모두 처리한 후에 소켓을 닫는다.
+        - 예외) 미처리 패킷을 즉시 버리거나, 지정 시간동안 처리하기 위해 ```setsockopt()``` 사용한다.
+        - UDP 방식에서는 단순히 소켓을 닫는 작업이다.
+        ```c
+        close(sockfd);
+        ```
