@@ -64,20 +64,20 @@
       - UDP 소켓 예제 : ```sock = socket(AF_INET, SOCK_DGRAM, 0);```
 
     - 주소 정보를 위한 구조체
-      - ```sockaddr``` 구조체 : 소켓 주소를 표현하는 **범용의 구조체**
+      - ```sockaddr``` 구조체 : 소켓 주소를 표현하는 **범용의 구조체** (connect는 sockaddr을 받는 것으로 나와있다. (sockaddr_in X))
         ```c
         struct sockaddr {
             sa_family sa_family;    // 소켓의 프로토콜 주소체계
             char sa_data[14];       // 해당 주소체계에서 사용하는 주소 정보
         }
         ```
-      - ```sockaddr_in``` 구조체 : **IPv4 주소체계**에서 사용하는 소켓 주소 표현 구조체
+      - ```sockaddr_in``` 구조체 : **IPv4 주소체계**에서 사용하는 소켓 주소 표현 구조체 (기존 sockaddr과의 호환성을 위해 빈 자료를 첨가함)
         ```c
         struct sockaddr_in {
             sin_family_t sin_family;      // IPv4 주소 체계, AF_INET
             uint16_t sin_port;            // 포트 번호, 16bit, Big Endian
             struct in_addr sin_addr;      // IPv4 IP 주소 구조체, 32bit, Big Endian
-            char sin_zero[8];             // sockaddr과 같은 크기 위해, 항상 0
+            char sin_zero[8];             // sockaddr과 같은 크기 위해, 항상 0 (sockaddr의 크기를 맞추기 위해 만든 빈 자료)
         }
         
         struct in_addr {
@@ -88,7 +88,7 @@
         - 소켓 프로그래밍에서 사용되는 용어 -> Big Endian을 사용한다.(이정도만 기억)
         - RISK 서버를 다룰 때 사용되는 용어(sun spark, hp 서버 등)
         - 차이 : 데이터 표현 방식(그래서 변환 함수가 필요하다고 생각하면 된다.)
-          - Big Endian : 9000(dec) => 0x2328 /  0010 0011 0010 1000_2
+          - Small Endian -> Big Endian : 9000(dec) => (0x2328 /  0010 0011 0010 1000_2)
 
       - 서버 사용 예
         ```c
@@ -149,8 +149,8 @@
           ``
         - ```read()``` / ```write()``` : TCP 방식에서의 송수신
           ```c
-          int write(sockfd, char *buf, int bufsize)
-          int read(sockfd, char *buf, int bufsize)
+          int write(sockfd, char *buf, int bufsize);
+          int read(sockfd, char *buf, int bufsize);
             // sockfd : 서버의 경우 accept()에 의해 생성된 소켓 기술자
             //          클라이언트의 경우 자신의 소켓 기술자
             // buf    : 송수신할 데이터 버퍼
@@ -178,3 +178,4 @@
 - 라즈베리파이 (linux)
   - ```#include <unistd.h>```
   - ```#include <netinet/in.h>```
+  - ```$ ping 라즈베리파이 주소``` : 연결 확인할 때 사용
