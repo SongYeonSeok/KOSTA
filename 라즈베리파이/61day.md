@@ -174,3 +174,7 @@
         ```c
         close(sockfd);
         ```
+        
+- 라즈베리파이 (linux)
+  - ```#include <unistd.h>```
+  - ```#include <netinet/in.h>```
